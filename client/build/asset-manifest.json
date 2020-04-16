@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.880972a2.chunk.css",
+    "main.js": "/static/js/main.678ab8e4.chunk.js",
+    "main.js.map": "/static/js/main.678ab8e4.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.469930a7.js",
+    "runtime~main.js.map": "/static/js/runtime~main.469930a7.js.map",
+    "static/js/2.1fa98f03.chunk.js": "/static/js/2.1fa98f03.chunk.js",
+    "static/js/2.1fa98f03.chunk.js.map": "/static/js/2.1fa98f03.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.bb3322a5f199bbb55905ed6c92445e66.js": "/precache-manifest.bb3322a5f199bbb55905ed6c92445e66.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.880972a2.chunk.css.map": "/static/css/main.880972a2.chunk.css.map",
+    "static/media/chip.svg": "/static/media/chip.d62abd3d.svg",
+    "static/media/companyLogoV2.png": "/static/media/companyLogoV2.c52482ba.png",
+    "static/media/blog.module.css": "/static/media/fa-solid-900.c691fb6d.ttf",
+    "static/media/font-awesome.min.css": "/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/main.css": "/static/media/icon-search.19014f13.svg",
+    "static/media/ionicons.min.css": "/static/media/ionicons.621bd386.svg",
+    "static/media/led.svg": "/static/media/led.a965e636.svg",
+    "static/media/style.css": "/static/media/lego.ca196ddf.png",
+    "static/media/legoCorner.png": "/static/media/legoCorner.dc150847.png",
+    "static/media/mining.svg": "/static/media/mining.3e69f26b.svg",
+    "static/media/online-class.svg": "/static/media/online-class.078b2f78.svg",
+    "static/media/t.png": "/static/media/t.e782c1c0.png",
+    "static/media/tekblg.png": "/static/media/tekblg.1c982c6c.png",
+    "static/media/tutorialVid.mp4": "/static/media/tutorialVid.0c2e0fcb.mp4"
+  }
+}
