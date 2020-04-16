@@ -27,8 +27,6 @@ doc.setAttribute('data-useragent', navigator.userAgent);
 //     });
 // };
 
-console.log('called')
-
 // var clPreloader = function() {
       
 //     $("html").addClass('ss-preload');

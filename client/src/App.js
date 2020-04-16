@@ -7,13 +7,69 @@ import AmazonScraper from '../src/components/amazonScraper.js';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Footer from '../src/components/footer'
 import './App.css';
+import { toggleMobile } from './actions/appActions.js'
+import { connect } from 'react-redux';
+import $ from 'jquery';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { };
+    this.state = { 
+      loading: true
+    };
   }
 
+  componentDidMount() {
+    // event listeners
+    window.addEventListener('resize', this.checkWindowDimensions);
+
+    if ( window.innerWidth < 901 && !this.props.mobile ){
+      this.props.toggleMobile('ON');
+    } else if ( window.innerWidth >= 901 && this.props.mobile ){
+      console.log(`called update`);
+      this.props.toggleMobile('OFF');
+    }
+    $('body').prepend(`<div id='animationWindow' style="position:fixed; background-color: white; z-index: 10000000" />
+        <script>
+          var animData = {
+          wrapper: document.querySelector('#animationWindow'),
+          animType: 'svg',
+          loop: true,
+          prerender: true,
+          autoplay: true,
+          path: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/35984/LEGO_loader.json'
+      };
+      var anim = bodymovin.loadAnimation(animData);
+      anim.setSpeed(3.4);  
+        </script>`);
+      $(window).on('load', function(){
+        setTimeout(removeLoader, 5000); //wait for page load PLUS two seconds.
+      });
+      function removeLoader(){
+        $('#root').css({
+          overflow: 'initial'
+        });
+          $( "#animationWindow" ).fadeOut(500, function() {
+            // fadeOut complete. Remove the loading div
+            
+            $( "#animationWindow" ).remove(); //makes page more lightweight 
+        });  
+      }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.checkWindowDimensions);
+  }
+
+  checkWindowDimensions = () => {
+    // call a re-render upon resizing
+    if ( window.innerWidth < 901 && !this.props.mobile ){
+      this.props.toggleMobile('ON');
+    } else if ( window.innerWidth >= 901 && this.props.mobile ){
+      console.log(`called update`);
+      this.props.toggleMobile('OFF');
+    }
+  }
 
   render() {
 
@@ -35,4 +91,8 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => (
+  { mobile: state.AppReducer.mobile }
+)
+
+export default connect(mapStateToProps, { toggleMobile })(App);

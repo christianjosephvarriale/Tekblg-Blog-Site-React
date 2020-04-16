@@ -9,6 +9,8 @@
 # General
 --------------------------------------------------------------*/
 
+
+
 #animationWindow {
   width: 100%;
   height: 100vh;
@@ -52,12 +54,24 @@ h6 {
   padding: 0;
 }
 
+.codeHeader {
+  background: #a7a9ac;
+    font-size: 14px;
+    padding: 3px;
+}
+
+.codeBox {
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
 /* Back to top button */
 
 .back-to-top {
   position: fixed;
   display: none;
-  background: #87478a;
+  background: rgb(255, 188, 39);
   color: #fff;
   padding: 2px 20px 8px 20px;
   font-size: 16px;
@@ -84,7 +98,7 @@ h6 {
 
 #header {
   padding: 30px 0;
-  height: 92px;
+  height: 110px;
   position: fixed;
   left: 0;
   top: 0;
@@ -126,7 +140,7 @@ h6 {
 #header.header-fixed {
   background: white;
   padding: 20px 0;
-  height: 72px;
+  height: 90px;
   transition: all 0.5s;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
@@ -142,18 +156,69 @@ h6 {
 }
 
 .banner {
-  background: url('../img/background.png') center top no-repeat;
+  background: url('../img/lego.png') center top no-repeat;
   background-size: cover;
   position: absolute;
   height: 100vh;
   width: 100vw;
-  opacity: .6;
+  z-index: 100;
+	animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+.tekblgTitle {
+
+  font: 700 4em/1 "Oswald", sans-serif;
+  letter-spacing: 0;
+  padding: .25em 0 .325em;
+  display: block;
+  margin: 0 auto;
+  text-shadow: 0 0 80px rgba(255,255,255,.5);
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	display: inline-block;
+	border: 4px double rgba(255,255,255,.25);
+	border-width: 4px 0;
+
+/* Clip Background Image */
+
+  background: url('../img/animated_text_fill.png') repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: aitf 80s linear infinite;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+  animation: aitf 80s linear infinite;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+}
+
+@-webkit-keyframes aitf {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes aitf {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 #intro .intro-text {
   position: absolute;
   left: 0;
-  top: 60px;
+  top: 250px;
   right: 0;
   height: calc(50% - 60px);
   display: -webkit-box;
@@ -191,6 +256,7 @@ h6 {
   padding: 0 15px;
   font-size: 24px;
   text-align: center;
+  line-height: 30px; 
 }
 
 #intro .btn-get-started {
@@ -481,7 +547,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   display: block;
   width: 60px;
   height: 3px;
-  background: #871f78;
+  background: #ffbc27;
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -490,7 +556,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   display: block;
   width: 60%;
   height: 1px;
-  background: #871f78;
+  background: #ffbc27;
   margin: 0 auto;
 }
 /* Section with background
@@ -724,6 +790,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #more-features .box {
   padding: 20px;
+  height: 100%;
   margin-bottom: 30px;
   box-shadow: 0px 0px 30px rgba(73, 78, 92, 0.15);
   background: #fff;
@@ -739,7 +806,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #more-features .icon {
-  width: 70%;
+  width: 60%;
   margin: auto;
   margin-right: 35px;
 }
@@ -1056,6 +1123,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-family: "Montserrat", sans-serif;
   color: #888;
   text-align: left;
+  margin: 30px 0;
 }
 
 #contact .social-links {
@@ -1171,7 +1239,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #footer .footer-links a {
-  color: #666;
+  color: #666 !important;
   padding-left: 15px;
 }
 
@@ -1208,7 +1276,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 #logo {
   display: flex;
   align-items: center;
-  width: 250px;
   justify-content: space-evenly;
 }
 
@@ -1225,7 +1292,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   }
 
   #header #logo img {
-    max-height: 40px;
+    max-height: 60px;
   }
 
   #intro h2 {
@@ -1235,7 +1302,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 
   #intro p {
     font-size: 18px;
-    line-height: 24px;
     margin-bottom: 20px;
   }
 

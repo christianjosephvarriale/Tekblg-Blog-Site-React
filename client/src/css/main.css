@@ -1289,7 +1289,7 @@ body.search-is-visible {
   width: 22px;
   height: 2px;
   margin-top: -1px;
-  background-color: #000000;
+  background-color: rgb(244, 48, 68) ;
   -webkit-transition: background 0.2s ease-in-out;
   transition: background 0.2s ease-in-out;
   font: 0/0 a;
@@ -1370,7 +1370,7 @@ body.search-is-visible {
 
 .header__nav li a {
   display: block;
-  color: #871f78; 
+  color: rgb(244, 48, 68); 
   font-weight: 500;
   font-size: 15px;
   -webkit-transition: color 0.3s ease-in-out;
@@ -1486,6 +1486,8 @@ body.search-is-visible {
         display: none;
     }
  }
+
+ 
 
  .header__nav {
   display: flex;

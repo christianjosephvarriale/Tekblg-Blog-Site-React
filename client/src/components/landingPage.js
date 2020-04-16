@@ -7,23 +7,18 @@ import '../lib/ionicons/css/ionicons.min.css';
 import '../lib/magnific-popup/magnific-popup.css';
 import '../css/style.css';
 import Button from './button';
-
-import dataVisualization from '../img/dataVisualization.png';
-import scraping from '../img/scraping.png';
-import hardware from '../img/hardware.png';
-
 import chip from '../img/chip.svg';
 import mining from '../img/mining.svg';
 import course from '../img/online-class.svg';
 import led from '../img/led.svg';
-
-import scraper from '../img/realTimeScraper.png';
-
+import TypeIt from 'typeit';
 import { connect } from 'react-redux';
-import { toggleLoader } from '../actions/appActions';
+import tekblg from '../img/tekblg.png'
+import '../css/code.css'
 
 // define jQuery as part of the window
 window.jQuery = jquery;
+const $ = jquery
 
 
 require("../lib/jquery/jquery.min.js");
@@ -36,6 +31,8 @@ require("../lib/superfish/superfish.min.js");
 require("../lib/magnific-popup/magnific-popup.min.js");
 require("../js/main.js");
 
+
+
 class LandingPage extends Component {
     constructor(props) {
       super(props);
@@ -45,83 +42,198 @@ class LandingPage extends Component {
     componentDidMount() {
 
         setTimeout(() => {
-            // turn off the loader
-            this.props.toggleLoader();;
+
+            new TypeIt("#text", {
+                speed: 100,
+                waitUntilVisible: true
+            })
+                .type("Let's build")
+                .pause(100)
+                .delete(5)
+                .type("Learn")
+                .pause(100)
+                .delete(5)
+                .type("Design")
+                .pause(100)
+                .break()
+                .type("<em style='color:#00a3d6' >Somting Awsme</em>")
+                .move(-10)
+                .type("e")
+                .pause(50)
+                .move(1)
+                .type("h")
+                .pause(50)
+                .move(6)
+                .type("e")
+                .pause(50)
+                .move(1)
+                .type("o")
+                .move(3)
+                .go();
+
+            new TypeIt("#code", {
+                speed: 20,
+                waitUntilVisible: true
+            })
+            .type("$ ")
+            .pause(1500)
+            .type("Your one stop-shop for all things Computer Engineering")
+            .pause(1500)
+            .break()
+            .type("$ ")
+            .pause(1500)
+            .type("Pickup real world knowledge")
+            .pause(1500)
+            .break()
+            .type("$ cat tekblgServices.js")
+            .pause(1500)
+            .break()
+            .type("&lt;script&gt;")
+            .pause(1500)
+            .break()
+            .type("for ( let content in Tekblg&#46;Content&#59 ) &#123;")
+            .pause(1500)
+            .break()
+            .type("&nbsp;&nbsp;freeBlogPosts(); // Freemium is the way to go")
+            .pause(1500)
+            .break()
+            .type("&nbsp;&nbsp;detailedTechnicalPosts(); // SEO clickbait ain't right")
+            .pause(1500)
+            .break()
+            .type("&nbsp;&nbsp;awesomeMerchandiseAndApps(); // You're welcome")
+            .pause(1500)
+            .break()
+            .type("&lt;/script&gt;")
+            .break()
+            .pause(1500)
+            .type("$ ")
+            .go();
+
+
+                let i = 0;
+                var intervalID = setInterval(function () {
+
+                    $('#codeContainer').removeClass('prettyprinted');
+                    window.PR.prettyPrint()
+
+                    if (++i === 100) {
+                        window.clearInterval(intervalID);
+                    }
+                }, 1000);
         }, 5000)
-        
+
     }
 
     render() {
-
+        console.log('rerendered')
         const { loading } = this.props.state;
         if (loading) {
             return ( null )
         } else {
             return (
                 <div>
-                <section id="intro">
-                    <div class='banner' />
-
-                    <div class="intro-text">
-                        <h2>Welcome to Tekblg</h2>
-                        <p>We provide powerful insights and tech products</p>
-                        <Button handleClick={(e) => this.props.toggleSubscriptionState()} label={'Subscribe'}/> 
-                        {/* <a href="#about" class="btn-get-started scrollto">Get Started</a> */}
-                    </div>
-
-                    <div class="product-screens">
-
-                        <div class="product-screen-1 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.6s">
-                            <img src={dataVisualization} alt="Data Visualization"/>
-                            <p>Tech Insights</p>
+                    <section id="intro">
+                        <div className={'banner'} style={{marginTop: 30}} />
+                        <div class="intro-text">
+                            <img style={{ width: '90%', maxWidth:500, zIndex: 1}} src={tekblg} />
+                            <p style={{fontWeight: 600, color: '#f43044', width:'100%', marginBottom: 60}} id='text'></p>
+                            <Button handleClick={(e) => this.props.toggleSubscriptionState()} label={'Subscribe'}/> 
                         </div>
-
-                        <div class="product-screen-2 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.6s">
-                            <img src={scraping} alt=""/>
-                            <p>Code Snippets</p>
-                        </div>
-
-                        <div class="product-screen-3 wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="0.6s">
-                            <img src={hardware} alt=""/>
-                            <p>Hardware Designs</p>
-                        </div>
-
-                    </div>
-
                     </section>
-
                     <main id="main">
-                    <section id="about" class="section-bg">
-                        <div class="container-fluid">
-                        <div class="section-header">
+                     {/* <section id="about" class="section-bg">
+                        <div class="container-fluid"> */}
+                        {/* <div class="section-header">
                             <h3 class="section-title">About Us</h3>
                             <span class="section-divider"></span>
                             <p class="section-description">
-                                We are committed to quality content <br/>
+                                We believe tech can be fun <br/>
                             </p>
-                        </div>
+                        </div> */}
 
-                        <div class="row">
+                        {/* <div class="row">
                             <div style={{padding:20}} class="col-lg-6 about-img wow fadeInLeft">
-                            <img src={scraper} alt="" />
+                            <img src={block} alt="" />
                             </div>
 
                             <div style={{padding:20}} class="col-lg-6 content wow fadeInRight">
-                            <h2> Engineering. Insights. Knowledge </h2>
-                            <h3> Pickup an interesting new project or build something great </h3>
-
-                            <ul>
-                                <li><i class="ion-android-checkmark-circle"></i> No ads. Allowing you to recieve quality content without distraction </li>
-                                <li><i class="ion-android-checkmark-circle"></i> Detailed technical posts outlining specific implementations that work right away </li>
-                                <li><i class="ion-android-checkmark-circle"></i> Awesome merchandise and applications to streamline portions of your project </li>
-                            </ul>
-
+                                <h2> New approach to technical education </h2>
+                                <h3> We're frustrated with theoretical based teaching </h3>
+                                <p> Blogs are filled with short tutorials with niche content, we'll teach you knowledge to build meaningful projects </p>
                             </div>
+                        </div> */}
+
+                        {/* </div>
+                    </section> */}
+
+                    <section id="more-features" class="section-bg">
+                        <div class="container">
+
+                        <div class="section-header">
+                            <h3 class="section-title">Oh we've got products</h3>
+                            <span class="section-divider"></span>
+                            <p class="section-description">Whether it's educational or ready to use </p>
                         </div>
 
+                        <div style={{marginBottom: 60}} class="row">
+
+                            <div style={{padding:'20px 20px 0 20px'}} class="col-lg-6">
+                            <div class="box wow fadeInLeft">
+                                <div class="icon"><img src={chip} /></div>
+                                <div>
+                                    <h4 class="title">Buzz Topics & Applications</h4>
+                                    <p class="description">Demystify Machine Learning and cloud computing applications for your next project</p>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div style={{padding:'20px 20px 0 20px'}} class="col-lg-6">
+                            <div class="box wow fadeInRight">
+                                <div class="icon"><img src={mining} /></div>
+                                <div>
+                                    <h4 class="title">Ready to use tools and components</h4>
+                                    <p class="description"> Don't re-invent the wheel. We've got everything from Data Pipelines and hardware schematics, to generic handy software</p>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div style={{padding:'20px 20px 0 20px'}} class="col-lg-6">
+                            <div class="box wow fadeInLeft">
+                                <div class="icon"><img src={course} /></div>
+                                <div>
+                                    <h4 class="title">Learn Computer Engineering coursework</h4>
+                                    <p class="description">Courses in engineering are seldom taught well. Learn about advanced concepts in programming and hardware design.</p>
+                                </div>
+                               </div>
+                            </div>
+
+                            <div style={{padding:'20px 20px 0 20px'}} class="col-lg-6">
+                            <div class="box wow fadeInRight">
+                                <div class="icon"><img src={led} /></div>
+                                <div>
+                                    <h4 class="title">Purchase well designed products</h4>
+                                    <p class="description">License awesome code, purchase geeky hardware systems and buy apparel to show the tech world what you stand for</p>
+                                </div>
+                              </div>
+                            </div>
+
+                        </div>
                         </div>
                     </section>
-                    <div class="line" />
+
+                    <div style={{width:'80%', margin:'auto'}} className="codeBox">
+                        <div className="codeHeader">
+                            <p style={{padding: '3px 5px',marginTop:3,textAlign: 'center',color: 'black', fontWeight:500}}>
+                                Terminal
+                                <span style={{height: 0,float: 'right',fontSize: 54,color: '#fff',marginTop: -37 ,marginRight: 4}}>
+                                •
+                                </span>
+                            </p>
+                        </div>
+                        <pre id='codeContainer' className="prettyprint" style={{width:'100%',margin:0,borderRadius:0}}>
+                            <code id='code' />
+                        </pre>
+                    </div>
                     {/* <section id="features">
                         <div class="container">
 
@@ -242,61 +354,7 @@ The advanced dataflow contains a set of opportunities for status tracking, impor
 
                         </div>
                     </section> */}
-                    <section id="more-features" class="section-bg">
-                        <div class="container">
-
-                        <div class="section-header">
-                            <h3 class="section-title">How Tekblg provides you with great value</h3>
-                            <span class="section-divider"></span>
-                            <p class="section-description">Engineering is difficult but rewarding. Our products are elegantly designed so you don't have to struggle</p>
-                        </div>
-
-                        <div class="row">
-
-                            <div style={{padding:'20px 20px 0 20px'}} class="col-lg-6">
-                            <div class="box wow fadeInLeft">
-                                <div class="icon"><img src={chip} /></div>
-                                <div>
-                                    <h4 class="title">Artifical Intelligence</h4>
-                                    <p class="description">Use some of our text recognition and predictive models for your company's chatbot or data driven operations</p>
-                                </div>
-                                </div>
-                            </div>
-
-                            <div style={{padding:'20px 20px 0 20px'}} class="col-lg-6">
-                            <div class="box wow fadeInRight">
-                                <div class="icon"><img src={mining} /></div>
-                                <div>
-                                    <h4 class="title">Data Mining tools</h4>
-                                    <p class="description">Scrape product prices, availability, reviews, inventory, prominence, reputation from eCommerce websites.</p>
-                                </div>
-                                </div>
-                            </div>
-
-                            <div style={{padding:'20px 20px 0 20px'}} class="col-lg-6">
-                            <div class="box wow fadeInLeft">
-                                <div class="icon"><img src={course} /></div>
-                                <div>
-                                    <h4 class="title">Learn Computer Engineering coursework</h4>
-                                    <p class="description">Courses in engineering are seldom taught well. Learn about low level concepts in programming and hardware design.</p>
-                                </div>
-                               </div>
-                            </div>
-
-                            <div style={{padding:'20px 20px 0 20px'}} class="col-lg-6">
-                            <div class="box wow fadeInRight">
-                                <div class="icon"><img src={led} /></div>
-                                <div>
-                                    <h4 class="title">Purchase well designed circuits</h4>
-                                    <p class="description">Powerful bluetooth speaker, home automation systems, and LED matrices which add to the authenticity of any tech space</p>
-                                </div>
-                              </div>
-                            </div>
-
-                        </div>
-                        </div>
-                    </section>
-                    <div class="line" />
+                    
                     {/* <section id="clients">
                         <div class="container">
 
@@ -538,4 +596,4 @@ const mapStateToProps = state => (
     { state: state.AppReducer }
 )
 
-export default connect(mapStateToProps, { toggleLoader })(LandingPage);
+export default connect(mapStateToProps, { })(LandingPage);

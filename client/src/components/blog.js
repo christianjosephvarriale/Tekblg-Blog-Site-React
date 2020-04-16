@@ -7,11 +7,13 @@ import FeaturedBlogPost from './featuredBlogPost';
 import BlogPost from './blogPost';
 import { connect } from 'react-redux';
 import { fetchAllPosts } from '../actions/postActions';
-import { toggleLoader } from '../actions/appActions';
 
 import Pagniation from './pagination';
 
 class Blog extends Component {
+
+    componentWillMount() {
+    }
 
     componentDidMount() {
 
@@ -28,8 +30,6 @@ class Blog extends Component {
 
 
         setTimeout(() => {
-            // turn off the loader;
-            this.props.toggleLoader();
             require("../js/blog.js");
         }, 5000)
     }
@@ -38,7 +38,6 @@ class Blog extends Component {
         const props = this.props;
         var featPosts = props.state.featPosts
         var posts = props.state.posts;
-        let loading = props.loading;
 
         console.log(`Here are the posts: ${JSON.stringify(posts)}`)
 
@@ -75,22 +74,14 @@ class Blog extends Component {
             );
         }
 
-        if (!loading) {
-                return (
+        return (
                 <div id="top">
-                        {/* <div id="preloader">
-                            <div id="loader" className={styles.dotsFade}>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                        </div> */}
 
                         <section className={'s-featured'}>
                             <div className={styles.row}>
                                 <div className={styles.colFull}>
 
-                                    <div className={['featured-slider',styles.featured].join(" ")} data-aos="zoom-in">
+                                    <div className={['featured-slider',styles.featured].join(" ")}>
                                         {featPosts}
                                     </div>
                                 </div>
@@ -297,15 +288,11 @@ class Blog extends Component {
                         </div> 
                 </div>
             )
-        } else {
-            return ( null )
-        }
     }
 }
 
 const mapStateToProps = state => ({
     state: state.BlogReducer,
-    loading: state.AppReducer.loading
 })
 
-export default connect(mapStateToProps, { fetchAllPosts, toggleLoader })(Blog);
+export default connect(mapStateToProps, { fetchAllPosts })(Blog);

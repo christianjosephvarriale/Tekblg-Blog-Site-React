@@ -1,20 +1,25 @@
 import { APP_ACTIONS } from '../actions/types'
 
 const initalState = {
-    loading: true
+    mobile: true
 }
-
 
 const AppReducer = (state = initalState, action) => {
     switch (action.type) {
-      case APP_ACTIONS.TOGGLE_LOAD:
+      case APP_ACTIONS.MOBILE_ON:
         return {
-          loading: !state.loading
-        }
-        default:
+          ...state,
+          mobile: true
+      }
+      case APP_ACTIONS.MOBILE_OFF:
         return {
-            ...state
-        }
+          ...state,
+          mobile: false
+      }
+      default:
+      return {
+          ...state
+      }
     }
 }
 

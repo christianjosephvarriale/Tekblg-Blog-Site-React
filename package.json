@@ -1,5 +1,5 @@
 {
-"name": "list-of-ingredients",
+  "name": "list-of-ingredients",
   "license": "MIT",
   "engines": {
     "node": "10.15.3",
@@ -9,5 +9,8 @@
     "build": "yarn --cwd client install && yarn --cwd client build",
     "deploy": "cp -a client/build/. public/",
     "heroku-postbuild": "yarn build && yarn deploy"
+  },
+  "dependencies": {
+    "typeit": "^7.0.2"
   }
 }

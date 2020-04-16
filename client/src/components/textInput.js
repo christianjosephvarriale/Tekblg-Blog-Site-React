@@ -38,8 +38,9 @@ export default function OutlinedTextFields(props) {
           rowsMax="4"
           value={props.value}
           onChange={props.handleChange(props.name)}
-          margin="normal"
+          margin="small"
           variant="outlined"
+          size="small"
         />
       </form>
     );
@@ -54,8 +55,9 @@ export default function OutlinedTextFields(props) {
           className={classes.textField}
           value={props.value}
           onChange={props.handleChange(props.name)}
-          margin="normal"
+          margin="small"
           variant="outlined"
+          size="small"
         />
       </form>
     );

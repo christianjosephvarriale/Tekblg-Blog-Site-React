@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1),
+    fontSize: 13,
+    fontFamily: 'Montserrat'
   },
   input: {
     display: 'none',
@@ -16,7 +18,7 @@ export default function OutlinedButtons(props) {
 
   return (
     <div>
-      <Button size="large" onClick={props.handleClick} variant="outlined" style={{border: '1px solid #871f78' ,color: '#871f78'}} className={classes.button}>
+      <Button size="large" onClick={props.handleClick} variant="outlined" style={{fontWeight: 600, border: '2px solid rgb(244, 48, 68)' ,color: 'rgb(244, 48, 68)'}} className={classes.button}>
         {props.label}
       </Button>
     </div>

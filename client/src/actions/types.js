@@ -12,5 +12,6 @@ export const SUBSCRIPTION_ACTIONS = {
 }
 
 export const APP_ACTIONS = {
-  TOGGLE_LOAD: 'TOGGLE_LOAD'
+  MOBILE_ON: 'MOBILE_ON',
+  MOBILE_OFF: 'MOBILE_OFF'
 }

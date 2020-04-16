@@ -4,7 +4,7 @@ import Snackbar from './snackbar';
 import Textfield from './textInput';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { toggleLoader } from '../actions/appActions';
+import legoCorner from '../img/legoCorner.png'
 
 let year = new Date().getFullYear();
 
@@ -111,11 +111,7 @@ class Footer extends Component {
       }
 
     render() {
-        
-        const { loading } = this.props.state;
-        if (loading) {
-            return ( null )
-        } else {
+
         return (      
             <div>
                 <Snackbar handleClose={this.handleClose} open={this.state.openSuccess} variant={'success'} message={"Thanks for getting in contact! We'll reach out soon"} />
@@ -127,7 +123,14 @@ class Footer extends Component {
 
                                     <div class="col-lg-4 col-md-4">
                                     <div class="contact-about">
-                                        <h3>Tekblg</h3>
+                                        <h3>
+                                            <span style={{color:'#00a3d6'}}>T</span>
+                                            <span style={{color:'#f43044'}}>e</span>
+                                            <span style={{color:'#4fad13'}}>k</span>
+                                            <span style={{color:'#ffbc27'}}>b</span>
+                                            <span style={{color:'#f9dd06'}}>l</span>
+                                            <span style={{color:'#00a3d6'}}>g</span>
+                                        </h3>
                                         <p>A university of Waterloo Student Initiative. For any questions regarding custom integrations and projects, please write us a message. Our service team will promptly reply. Remember, you are what makes us awesome.</p>
                                         {/* <div class="social-links">
                                         <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
@@ -142,17 +145,17 @@ class Footer extends Component {
                                     <div class="col-lg-3 col-md-4">
                                     <div class="info">
                                         <div>
-                                        <i class="ion-ios-location-outline"></i>
+                                        <i style={{color:'#ffbc27'}} class="ion-ios-location-outline"></i>
                                         <p>University of Waterloo<br/>200 University Avenue West Waterloo, Ontario, N2L 3G1</p>
                                         </div>
 
                                         <div>
-                                        <i class="ion-ios-email-outline"></i>
-                                        <p>Tekblg@gmail.com</p>
+                                        <i style={{color:'#00a3d6'}} class="ion-ios-email-outline"></i>
+                                        <p>christian@tekblg.com</p>
                                         </div>
 
                                         <div>
-                                        <i class="ion-ios-telephone-outline"></i>
+                                        <i style={{color:'#4fad13'}} class="ion-ios-telephone-outline"></i>
                                         <p>+1 647 704 8645</p>
                                         </div>
 
@@ -162,11 +165,11 @@ class Footer extends Component {
                                     <div class="col-lg-5 col-md-8">
                                     <div class="form">
                                         <form id="contactForm" role="form" class="contactForm">
-                                        <div class="form-row">
-                                            <div class="form-group col-lg-6">
+                                        <div style={{margin: 0}} class="form-row">
+                                            <div style={{padding: 0}} class="form-group col-lg-6">
                                                 <Textfield helperText={(this.state.nameError) ? 'Please fill out your name' : ''} error={this.state.nameError} name={'name'} value={this.state.name} handleChange={this.handleChange} />
                                             </div>
-                                            <div class="form-group col-lg-6">
+                                            <div style={{padding: 0}} class="form-group col-lg-6">
                                                 <Textfield helperText={(this.state.emailError) ? 'Please fill out your email' : ''} error={this.state.emailError} name={'email'} value={this.state.email} handleChange={this.handleChange} />
                                              </div>
                                         </div>
@@ -185,7 +188,8 @@ class Footer extends Component {
 
                                 </div>
                             </section>
-                            <footer id="footer">
+                            <footer style={{position:'relative'}} id="footer">
+                                <img style={{position: 'absolute', width: 200, opacity:0.3, left: 0, bottom: 0}} src={legoCorner} />
                                 <div class="container">
                                     <div class="row">
                                     <div class="col-lg-6 text-lg-left text-center">
@@ -195,10 +199,11 @@ class Footer extends Component {
                                     </div>
                                     <div class="col-lg-6">
                                         <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
-                                        <a href="#intro" class="scrollto">Home</a>
-                                        <a href="#about" class="scrollto">About</a>
-                                        <a href="#">Privacy Policy</a>
-                                        <a href="#">Terms of Use</a>
+                                        <a style={{color:'#888 !important'}} href="#intro" class="scrollto">Home</a>
+                                        <a style={{color:'#888 !important'}} href="#about" class="scrollto">About</a>
+                                        <a style={{color:'#888 !important'}} href="#contact" class="scrollto">About</a>
+                                        <a style={{color:'#888 !important'}} href="#">Privacy Policy</a>
+                                        <a style={{color:'#888 !important'}} href="#">Terms of Use</a>
                                         </nav>
                                     </div>
                                     </div>
@@ -207,7 +212,6 @@ class Footer extends Component {
             </div>
            
             )
-        }
     }
 }
 
@@ -216,4 +220,4 @@ const mapStateToProps = state => (
     { state: state.AppReducer }
 )
 
-export default connect(mapStateToProps, { toggleLoader })(Footer);
+export default connect(mapStateToProps, { })(Footer);
