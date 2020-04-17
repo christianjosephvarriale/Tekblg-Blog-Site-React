@@ -1,8 +1,5 @@
 /* eslint-disable no-restricted-globals */
 import jQuery from 'jquery';
-import google from 'google';
-
-const WOW = require("../lib/wow/wow.min.js");
 
 jQuery(document).ready(function($) {
 
@@ -28,18 +25,6 @@ jQuery(document).ready(function($) {
     }, 1500, 'easeInOutExpo');
     return false;
   });
-
-  // Initiate the wowjs animation library
-  new WOW().init();
-
-  // Initiate superfish on nav menu
-  $('.nav-menu').superfish({
-    animation: {
-      opacity: 'show'
-    },
-    speed: 400
-  });
-
 
   // Mobile Navigation
   if ($('#nav-menu-container').length) {

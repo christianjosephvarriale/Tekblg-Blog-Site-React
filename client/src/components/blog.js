@@ -7,13 +7,10 @@ import FeaturedBlogPost from './featuredBlogPost';
 import BlogPost from './blogPost';
 import { connect } from 'react-redux';
 import { fetchAllPosts } from '../actions/postActions';
-
+import LazyLoad from 'react-lazyload'
 import Pagniation from './pagination';
 
 class Blog extends Component {
-
-    componentWillMount() {
-    }
 
     componentDidMount() {
 
@@ -31,7 +28,7 @@ class Blog extends Component {
 
         setTimeout(() => {
             require("../js/blog.js");
-        }, 5000)
+        }, 5500)
     }
 
     render(){
@@ -68,9 +65,17 @@ class Blog extends Component {
             console.log(`Here are the sliced posts: ${JSON.stringify(slcdPostLst)}`)
 
             posts = slcdPostLst.map((post) =>  
-                <BlogPost title={post.title} headerImg={post.headerImg} id={post.id} 
-                            catagory={post.catagory} date={post.date} 
-                /> 
+                { 
+                    return (
+                        <BlogPost 
+                            title={post.title} 
+                            headerImg={post.headerImg} 
+                            id={post.id} 
+                            catagory={post.catagory} 
+                            date={post.date} 
+                        />
+                    )
+                } 
             );
         }
 

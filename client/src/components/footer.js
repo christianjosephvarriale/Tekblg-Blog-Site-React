@@ -4,7 +4,7 @@ import Snackbar from './snackbar';
 import Textfield from './textInput';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import legoCorner from '../img/legoCorner.png'
+import LazyLoad from 'react-lazyload';
 
 let year = new Date().getFullYear();
 
@@ -145,17 +145,14 @@ class Footer extends Component {
                                     <div class="col-lg-3 col-md-4">
                                     <div class="info">
                                         <div>
-                                        <i style={{color:'#ffbc27'}} class="ion-ios-location-outline"></i>
                                         <p>University of Waterloo<br/>200 University Avenue West Waterloo, Ontario, N2L 3G1</p>
                                         </div>
 
                                         <div>
-                                        <i style={{color:'#00a3d6'}} class="ion-ios-email-outline"></i>
                                         <p>christian@tekblg.com</p>
                                         </div>
 
                                         <div>
-                                        <i style={{color:'#4fad13'}} class="ion-ios-telephone-outline"></i>
                                         <p>+1 647 704 8645</p>
                                         </div>
 
@@ -189,7 +186,7 @@ class Footer extends Component {
                                 </div>
                             </section>
                             <footer style={{position:'relative'}} id="footer">
-                                <img style={{position: 'absolute', width: 200, opacity:0.3, left: 0, bottom: 0}} src={legoCorner} />
+                                <LazyLoad placeholder={<p>Lazy Loading...</p>}><img style={{position: 'absolute', width: 200, opacity:0.3, left: 0, bottom: 0}} src={`https://images.ctfassets.net/5zy76n4olg5p/4V4rBRxxjMyzWrm0or4cIh/19716e176680f3d182d425f51ea83a70/legoCorner.png?w=${200}&fm=jpg&fl=progressive`} /></LazyLoad>
                                 <div class="container">
                                     <div class="row">
                                     <div class="col-lg-6 text-lg-left text-center">

@@ -31,6 +31,7 @@ class NavBar extends Component {
         if (!document.cookie.includes('subscribed=true')) {
             this.props.toggleSubscriptionState();
         }
+        require('../js/navbar.js')
     }
 
     handleSubmit = () => {

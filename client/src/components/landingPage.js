@@ -2,36 +2,23 @@ import React, { Component } from 'react';
 import jquery from 'jquery';
 import '../lib/bootstrap/css/bootstrap.min.css';
 import '../lib/animate/animate.min.css';
-import '../lib/font-awesome/css/font-awesome.min.css';
-import '../lib/ionicons/css/ionicons.min.css';
 import '../lib/magnific-popup/magnific-popup.css';
 import '../css/style.css';
 import Button from './button';
-import chip from '../img/chip.svg';
-import mining from '../img/mining.svg';
-import course from '../img/online-class.svg';
-import led from '../img/led.svg';
 import TypeIt from 'typeit';
+import LazyLoad from 'react-lazyload';
+
 import { connect } from 'react-redux';
-import tekblg from '../img/tekblg.png'
 import '../css/code.css'
 
 // define jQuery as part of the window
 window.jQuery = jquery;
 const $ = jquery
 
-
-require("../lib/jquery/jquery.min.js");
-require("../lib/jquery/jquery-migrate.min.js");
 require("../lib/bootstrap/js/bootstrap.bundle.min.js");
-require("../lib/easing/easing.min.js");
-require("../lib/wow/wow.min.js");
-require("../lib/superfish/hoverIntent.js");
-require("../lib/superfish/superfish.min.js");
+const WOW = require("../lib/wow/wow.min.js");
 require("../lib/magnific-popup/magnific-popup.min.js");
 require("../js/main.js");
-
-
 
 class LandingPage extends Component {
     constructor(props) {
@@ -40,6 +27,8 @@ class LandingPage extends Component {
     }
 
     componentDidMount() {
+
+        new WOW().init()
 
         setTimeout(() => {
 
@@ -125,7 +114,6 @@ class LandingPage extends Component {
     }
 
     render() {
-        console.log('rerendered')
         const { loading } = this.props.state;
         if (loading) {
             return ( null )
@@ -133,9 +121,9 @@ class LandingPage extends Component {
             return (
                 <div>
                     <section id="intro">
-                        <div className={'banner'} style={{marginTop: 30}} />
+                        <div style={{marginTop: 30,background: `url('https://images.ctfassets.net/5zy76n4olg5p/Hryl5ey0OE8nujJDTd4q1/3a2e8f88ab3693e01501262afc6f33b0/lego.png?w=${this.props.mobile ? 800 : Math.round(window.innerWidth)}&fm=jpg&fl=progressive') center top no-repeat`, backgroundSize: 'cover',zIndex: 0}}className={'banner'} />
                         <div class="intro-text">
-                            <img style={{ width: '90%', maxWidth:500, zIndex: 1}} src={tekblg} />
+                            <img style={{ width: '90%', maxWidth:500, zIndex: 1}} src={`https://images.ctfassets.net/5zy76n4olg5p/3clyQJTsKfgFoqZICDPR4A/649de57c7198efc28bed05b1bed43bed/tekblg.png?w=${Math.round(window.innerWidth) > 500 ? 500 : Math.round(window.innerWidth)}&fm=jpg&fl=progressive`} />
                             <p style={{fontWeight: 600, color: '#f43044', width:'100%', marginBottom: 60}} id='text'></p>
                             <Button handleClick={(e) => this.props.toggleSubscriptionState()} label={'Subscribe'}/> 
                         </div>
@@ -179,7 +167,8 @@ class LandingPage extends Component {
 
                             <div style={{padding:'20px 20px 0 20px'}} class="col-lg-6">
                             <div class="box wow fadeInLeft">
-                                <div class="icon"><img src={chip} /></div>
+                                <div class="icon">
+                                    <LazyLoad placeholder={<p>Lazy Loading...</p>}><img src={'https://images.ctfassets.net/5zy76n4olg5p/6LY5VHi8aJjCPoViTqQAeP/2f593400cbf7a87519e91036efb62874/chip.svg?w=150&fm=jpg&fl=progressive'} /></LazyLoad></div>
                                 <div>
                                     <h4 class="title">Buzz Topics & Applications</h4>
                                     <p class="description">Demystify Machine Learning and cloud computing applications for your next project</p>
@@ -189,7 +178,7 @@ class LandingPage extends Component {
 
                             <div style={{padding:'20px 20px 0 20px'}} class="col-lg-6">
                             <div class="box wow fadeInRight">
-                                <div class="icon"><img src={mining} /></div>
+                                <div class="icon"><LazyLoad placeholder={<p>Lazy Loading...</p>}><img src={'https://images.ctfassets.net/5zy76n4olg5p/5UuVvh3u6G0GDMGhs5sI2x/75355590ebf88e9fac7961b3ade96ebf/mining.svg?w=150&fm=jpg&fl=progressive'} /></LazyLoad></div>
                                 <div>
                                     <h4 class="title">Ready to use tools and components</h4>
                                     <p class="description"> Don't re-invent the wheel. We've got everything from Data Pipelines and hardware schematics, to generic handy software</p>
@@ -199,7 +188,7 @@ class LandingPage extends Component {
 
                             <div style={{padding:'20px 20px 0 20px'}} class="col-lg-6">
                             <div class="box wow fadeInLeft">
-                                <div class="icon"><img src={course} /></div>
+                                <div class="icon"><LazyLoad placeholder={<p>Lazy Loading...</p>}><img src={'https://images.ctfassets.net/5zy76n4olg5p/LSZLsQWy9mTOH2f7Hvq65/54589993a0a1502120d7890264d93938/online-class.svg?w=150&fm=jpg&fl=progressive'} /></LazyLoad></div>
                                 <div>
                                     <h4 class="title">Learn Computer Engineering coursework</h4>
                                     <p class="description">Courses in engineering are seldom taught well. Learn about advanced concepts in programming and hardware design.</p>
@@ -209,7 +198,7 @@ class LandingPage extends Component {
 
                             <div style={{padding:'20px 20px 0 20px'}} class="col-lg-6">
                             <div class="box wow fadeInRight">
-                                <div class="icon"><img src={led} /></div>
+                                <div class="icon"><LazyLoad placeholder={<p>Lazy Loading...</p>}><img src={'https://images.ctfassets.net/5zy76n4olg5p/2Evn0ECpqKD1EJqQh4iVo8/848387c5e77c6afc9122b9c2c84e570e/led.svg?w=150&fm=jpg&fl=progressive'} /></LazyLoad></div>
                                 <div>
                                     <h4 class="title">Purchase well designed products</h4>
                                     <p class="description">License awesome code, purchase geeky hardware systems and buy apparel to show the tech world what you stand for</p>
@@ -462,7 +451,7 @@ The advanced dataflow contains a set of opportunities for status tracking, impor
 
                         <ul id="faq-list" class="wow fadeInUp">
                             <li>
-                            <a data-toggle="collapse" class="collapsed" href="#faq1">I've got some project ideas I want to see built, can you help? <i class="ion-android-remove"></i></a>
+                            <a data-toggle="collapse" class="collapsed" href="#faq1">I've got some project ideas I want to see built, can you help?</a>
                             <div id="faq1" class="collapse" data-parent="#faq-list">
                                 <p>
                                     We listen to our readers. Any feedback you leave us will be incorperated into the next posts.
@@ -471,7 +460,7 @@ The advanced dataflow contains a set of opportunities for status tracking, impor
                             </li>
 
                             <li>
-                            <a data-toggle="collapse" href="#faq2" class="collapsed">I love your content, is there anyway we can help you develop more content? <i class="ion-android-remove"></i></a>
+                            <a data-toggle="collapse" href="#faq2" class="collapsed">I love your content, is there anyway we can help you develop more content?</a>
                             <div id="faq2" class="collapse" data-parent="#faq-list">
                                 <p>
                                     We are an entirely student initiative. Any donations provided are greatly appreciated and will help us to keep our content free.
@@ -480,7 +469,7 @@ The advanced dataflow contains a set of opportunities for status tracking, impor
                             </li>
 
                             <li>
-                            <a data-toggle="collapse" href="#faq3" class="collapsed">What makes your team qualified to teach engineering concepts? <i class="ion-android-remove"></i></a>
+                            <a data-toggle="collapse" href="#faq3" class="collapsed">What makes your team qualified to teach engineering concepts?</a>
                             <div id="faq3" class="collapse" data-parent="#faq-list">
                                 <p>
                                     Our team consists of computer engineering students with real world experince from around the world. Our content comes straight from the classroom to you.
@@ -593,7 +582,10 @@ The advanced dataflow contains a set of opportunities for status tracking, impor
 }    
 
 const mapStateToProps = state => (
-    { state: state.AppReducer }
+    { 
+        state: state.AppReducer,
+        mobile: state.AppReducer.mobile
+    }
 )
 
 export default connect(mapStateToProps, { })(LandingPage);

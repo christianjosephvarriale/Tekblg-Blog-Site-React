@@ -29,19 +29,33 @@ class App extends Component {
       console.log(`called update`);
       this.props.toggleMobile('OFF');
     }
-    $('body').prepend(`<div id='animationWindow' style="position:fixed; background-color: white; z-index: 10000000" />
-        <script>
-          var animData = {
-          wrapper: document.querySelector('#animationWindow'),
-          animType: 'svg',
-          loop: true,
-          prerender: true,
-          autoplay: true,
-          path: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/35984/LEGO_loader.json'
-      };
-      var anim = bodymovin.loadAnimation(animData);
-      anim.setSpeed(3.4);  
-        </script>`);
+    $('body').prepend(`
+        <div id="animationWindow" style="position:fixed; background-color: white; z-index: 10000000">
+        <div class='legoContainer'>
+        <div class='lego lego-4'>
+        <div class='circles circles-1'></div>
+        <div class='circles circles-2'></div>
+      </div>
+      <div class='lego lego-3'>
+        <div class='circles circles-1'></div>
+        <div class='circles circles-2'></div>
+      </div>
+      <div class='lego lego-2'>
+        <div class='circles circles-1'></div>
+        <div class='circles circles-2'></div>
+      </div>
+      <div class='lego lego-1'>
+        <div class='circles circles-1'></div>
+        <div class='circles circles-2'></div>
+      </div>
+      <div class='lego lego-0'>
+        <div class='circles circles-1'></div>
+        <div class='circles circles-2'></div>
+      </div>
+      </div>
+      </div>
+    `);
+
       $(window).on('load', function(){
         setTimeout(removeLoader, 5000); //wait for page load PLUS two seconds.
       });

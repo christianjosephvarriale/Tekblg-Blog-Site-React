@@ -38,15 +38,25 @@ class Pagination extends React.Component {
         }
     })
 
+    let back;
+    if (!backDisabled) {
+        back = <li><Link style={{display: backDisabled ? 'none' : ''}} className={styles.pgnPrev} to={'/blog/page/' + (parseInt(currentPage) - 5)}>Prev</Link></li>
+    }
+
+    let forward;
+    if (!forwardDisabled) {
+        forward = <li><Link style={{display: forwardDisabled ? 'none' : ''}} className={styles.pgnNext} to={'/blog/page/' + ((totalPages - currentPage > 5) ? parseInt(currentPage) + 5 : totalPages)} >Next</Link></li>
+    }
+
     return (
         <div className={[styles.row,styles.paginationWrap].join(" ")}>
             <div className={styles.colFull}>
                 <Router forceRefresh="true">
                     <nav className={styles.pgn} data-aos="fade-up">
                         <ul>
-                            <li><Link style={{display: backDisabled ? 'none' : ''}} className={styles.pgnPrev} to={'/blog/page/' + (parseInt(currentPage) - 5)}>Prev</Link></li>
+                            {back}
                             {pageElements}
-                             <li><Link style={{display: forwardDisabled ? 'none' : ''}} className={styles.pgnNext} to={'/blog/page/' + ((totalPages - currentPage > 5) ? parseInt(currentPage) + 5 : totalPages)} >Next</Link></li>
+                            {forward}
                         </ul>
                         <div>showing elements {(parseInt(currentPage-1) * 12) + 1} - {(((parseInt(currentPage) * 12) + 1) > props.total) ? props.total : ((parseInt(currentPage) * 12) + 1)} out of {props.total}</div>
                     </nav>

@@ -4,6 +4,7 @@ import styles from '../css/blog.module.css';
 import '../css/slick-slider.css';
 import { NavLink } from 'react-router-dom';
 
+import LazyLoad from 'react-lazyload'
 import Avatar from '@material-ui/core/Avatar';
 
 import { connect } from 'react-redux';
@@ -35,7 +36,8 @@ class FeaturedBlogPost extends Component {
             return (
                 <div className={'featured-slide'}>
                     <div className={'entry'}>
-                        <div className={'entry-background'} style={{ backgroundImage: 'url(' + headerImg + ')' }}></div>
+                        <LazyLoad>
+                        <div className={'entry-background'} style={{ backgroundImage: 'url(' + headerImg + ')' }}></div></LazyLoad>
                         
                         <div className={'entry-content'}>
                             <span className={'entry-category'}><NavLink to={'/blog/post/' + state.id}> {state.catagory} </NavLink> </span>

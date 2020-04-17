@@ -9,18 +9,15 @@ import { fetchPost, fetchComments } from '../actions/postActions';
 import Textfield from './textInput';
 import Snackbar from './snackbar';
 import '../css/code.css'
-
-import Img from './avatar';
-
-import logo from '../img/logo/companyLogoV2.png';
-
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
 import Button from './button'
 import axios from 'axios';
 import SideNav from './sideNav.js'
+import LazyLoad from 'react-lazyload';
+
+
 
 const colorArray = ['#283593','#c62828', '#0277BD', '#00695C', '#558B2F', '#F9A825', '#EF6C00', '#4E342E', '#37474F'];
 
