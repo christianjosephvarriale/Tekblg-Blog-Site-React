@@ -9398,3 +9398,89 @@ Processing by CommentsController#index as HTML
 Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/home/cjv/Documents/Tekblg/client/node_modules/eslint/lib/util/ignored-paths.js" for 127.0.0.1 at 2020-04-18 22:05:29 -0400
+Started GET "/home/cjv/Documents/Tekblg/client/node_modules/eslint-loader/index.js" for 127.0.0.1 at 2020-04-18 22:05:29 -0400
+Started GET "/home/cjv/Documents/Tekblg/client/node_modules/eslint/lib/cli-engine.js" for 127.0.0.1 at 2020-04-18 22:05:29 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/home/cjv/Documents/Tekblg/client/node_modules/eslint/lib/cli-engine.js"):
+  
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/cache/ruby/2.6.0/gems/railties-5.2.4.1/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/cache/ruby/2.6.0/gems/railties-5.2.4.1/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/cache/ruby/2.6.0/gems/activesupport-5.2.4.1/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/cache/ruby/2.6.0/gems/activesupport-5.2.4.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/cache/ruby/2.6.0/gems/activesupport-5.2.4.1/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/cache/ruby/2.6.0/gems/railties-5.2.4.1/lib/rails/rack/logger.rb:26:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/cache/ruby/2.6.0/gems/rack-2.0.8/lib/rack/runtime.rb:22:in `call'
+vendor/cache/ruby/2.6.0/gems/activesupport-5.2.4.1/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/cache/ruby/2.6.0/gems/rack-2.0.8/lib/rack/sendfile.rb:111:in `call'
+vendor/cache/ruby/2.6.0/gems/rack-cors-1.1.0/lib/rack/cors.rb:100:in `call'
+vendor/cache/ruby/2.6.0/gems/railties-5.2.4.1/lib/rails/engine.rb:524:in `call'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/configuration.rb:227:in `call'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/server.rb:674:in `handle_request'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/server.rb:476:in `process_client'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/server.rb:334:in `block in run'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  
+ActionController::RoutingError (No route matches [GET] "/home/cjv/Documents/Tekblg/client/node_modules/eslint-loader/index.js"):
+  
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/cache/ruby/2.6.0/gems/railties-5.2.4.1/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/cache/ruby/2.6.0/gems/railties-5.2.4.1/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/cache/ruby/2.6.0/gems/activesupport-5.2.4.1/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/cache/ruby/2.6.0/gems/activesupport-5.2.4.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/cache/ruby/2.6.0/gems/activesupport-5.2.4.1/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/cache/ruby/2.6.0/gems/railties-5.2.4.1/lib/rails/rack/logger.rb:26:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/cache/ruby/2.6.0/gems/rack-2.0.8/lib/rack/runtime.rb:22:in `call'
+vendor/cache/ruby/2.6.0/gems/activesupport-5.2.4.1/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/cache/ruby/2.6.0/gems/rack-2.0.8/lib/rack/sendfile.rb:111:in `call'
+vendor/cache/ruby/2.6.0/gems/rack-cors-1.1.0/lib/rack/cors.rb:100:in `call'
+vendor/cache/ruby/2.6.0/gems/railties-5.2.4.1/lib/rails/engine.rb:524:in `call'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/configuration.rb:227:in `call'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/server.rb:674:in `handle_request'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/server.rb:476:in `process_client'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/server.rb:334:in `block in run'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  
+ActionController::RoutingError (No route matches [GET] "/home/cjv/Documents/Tekblg/client/node_modules/eslint/lib/util/ignored-paths.js"):
+  
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/cache/ruby/2.6.0/gems/railties-5.2.4.1/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/cache/ruby/2.6.0/gems/railties-5.2.4.1/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/cache/ruby/2.6.0/gems/activesupport-5.2.4.1/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/cache/ruby/2.6.0/gems/activesupport-5.2.4.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/cache/ruby/2.6.0/gems/activesupport-5.2.4.1/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/cache/ruby/2.6.0/gems/railties-5.2.4.1/lib/rails/rack/logger.rb:26:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/cache/ruby/2.6.0/gems/rack-2.0.8/lib/rack/runtime.rb:22:in `call'
+vendor/cache/ruby/2.6.0/gems/activesupport-5.2.4.1/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/cache/ruby/2.6.0/gems/actionpack-5.2.4.1/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/cache/ruby/2.6.0/gems/rack-2.0.8/lib/rack/sendfile.rb:111:in `call'
+vendor/cache/ruby/2.6.0/gems/rack-cors-1.1.0/lib/rack/cors.rb:100:in `call'
+vendor/cache/ruby/2.6.0/gems/railties-5.2.4.1/lib/rails/engine.rb:524:in `call'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/configuration.rb:227:in `call'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/server.rb:674:in `handle_request'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/server.rb:476:in `process_client'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/server.rb:334:in `block in run'
+vendor/cache/ruby/2.6.0/gems/puma-3.12.2/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/comments/?post=6ckO1oplSVcciiVQEQ1Niz" for 127.0.0.1 at 2020-04-18 22:06:52 -0400
+Processing by CommentsController#index as HTML
+  Parameters: {"post"=>"6ckO1oplSVcciiVQEQ1Niz"}
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post" = ?[0m  [["post", "6ckO1oplSVcciiVQEQ1Niz"]]
+  ↳ app/controllers/comments_controller.rb:8
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
