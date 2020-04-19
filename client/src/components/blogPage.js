@@ -15,12 +15,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from './button'
 import axios from 'axios';
 import SideNav from './sideNav.js'
-import LazyLoad from 'react-lazyload';
-
-
+import {Helmet} from 'react-helmet';
 
 const colorArray = ['#283593','#c62828', '#0277BD', '#00695C', '#558B2F', '#F9A825', '#EF6C00', '#4E342E', '#37474F'];
-
 const generateColor = () => { return colorArray [ Math.round(Math.random() * (colorArray.length - 1)) ] }
 
 function validateEmail(email) {
@@ -157,7 +154,7 @@ class BlogPage extends Component {
     };
 
     render() {
-        var commentsLst = this.props.state.comments;
+        const commentsLst = this.props.state.comments;
         const post = this.props.state.currPost;
         const { mobile } = this.props;
         const { title } = post;
@@ -167,13 +164,10 @@ class BlogPage extends Component {
                 null
             )
         } else {
-           
 
         // change the title and the meta on the page
         const { meta } = post;
         const { title } = post;
-        document.getElementById("metaDes").setAttribute("content", meta);
-        document.querySelector('title').text = title;
 
         var tags = post.tags.map((tag) => {
             return <a>{tag}</a>
@@ -184,7 +178,7 @@ class BlogPage extends Component {
             const wrapper = document.getElementById('body');
             wrapper.innerHTML= post.body;
             window.PR.prettyPrint()
-        }, 0)
+        }, 1000)
 
         const generateInitials = (author) => {
             let names = author.split(" ");
@@ -201,38 +195,41 @@ class BlogPage extends Component {
         }
 
         let comments;
-        if (commentsLst.length > 0) {
-
-            comments = commentsLst.map((comment) => { return (
+        if (commentsLst && commentsLst.length > 0) {
+            try {
+                comments = commentsLst.map((comment) => { return (
                 
-                <Card style={{margin:'40px 0', padding:'0px 20px'}}>
-                    <CardContent>
-                    <li style={{margin:'40px 0'}} className={[styles.threadAlt,styles.depth1,styles.Comment].join(" ")}>
-
-                        <div className={styles.commentAvatar}>
-                            <Avatar style={{marginRight: 20, backgroundColor: generateColor() }}> {generateInitials(comment.name)} </Avatar>
-                        </div>
-
-                        <div className={styles.commentContent}>
-
-                            <div className={styles.commentInfo}>
-                                <div className={styles.commentAuthor}>{comment.name}</div>
-
-                                <div className={styles.commentMeta}>
-                                    <div className={styles.commentTime}> {timeConverter(comment.created_at)} </div>
+                    <Card style={{margin:'40px 0', padding:'0px 20px'}}>
+                        <CardContent>
+                        <li style={{margin:'40px 0'}} className={[styles.threadAlt,styles.depth1,styles.Comment].join(" ")}>
+    
+                            <div className={styles.commentAvatar}>
+                                <Avatar style={{marginRight: 20, backgroundColor: generateColor() }}> {generateInitials(comment.name)} </Avatar>
+                            </div>
+    
+                            <div className={styles.commentContent}>
+    
+                                <div className={styles.commentInfo}>
+                                    <div className={styles.commentAuthor}>{comment.name}</div>
+    
+                                    <div className={styles.commentMeta}>
+                                        <div className={styles.commentTime}> {timeConverter(comment.created_at)} </div>
+                                    </div>
+                                </div>
+    
+                                <div className={styles.commentText}>
+                                    <p>{comment.message}</p>
                                 </div>
                             </div>
-
-                            <div className={styles.commentText}>
-                                <p>{comment.message}</p>
-                            </div>
-                        </div>
-                        </li>
-                    </CardContent>
-                </Card>
-
-                 );
-            })
+                            </li>
+                        </CardContent>
+                    </Card>
+    
+                     );
+                })
+            } catch (error) {
+                console.log('error')
+            }
         }
     
         return (
@@ -240,6 +237,11 @@ class BlogPage extends Component {
                 <section style={{backgroundColor: 'white'}} className={[styles.sContent,styles.sContentTopPadding,styles.sContentNarrow].join(" ")}>
 
                     {sideNav}
+
+                    <Helmet>
+                        <title>{post.title}</title>
+                        <meta name="description" content={post.meta} />
+                    </Helmet>
 
                     <Snackbar handleClose={this.handleClose} open={this.state.openSuccess} variant={'success'} message={"Thanks for posting the comment"} />
                     <Snackbar handleClose={this.handleClose} open={this.state.openError} variant={'error'} message={"You've got some errors on the comment form"} />

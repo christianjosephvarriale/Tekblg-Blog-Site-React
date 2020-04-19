@@ -27,6 +27,15 @@ class NavBar extends Component {
 
     componentDidMount() {
 
+        const history = createBrowserHistory();
+
+        this.buttonsListener = history.listen(location => {
+            console.log(history)
+            if (history.action === 'POP') {
+                window.location.reload();
+            }
+        });
+
         // if the proper cookie tag is not set then show subscribe modal
         if (!document.cookie.includes('subscribed=true')) {
             this.props.toggleSubscriptionState();
@@ -75,8 +84,8 @@ class NavBar extends Component {
 
                 <ul style={{display:'block'}}class="header__nav">
                 
-                <li role="menuitem"><a style={{color: '#00a3d6'}} href="#" onClick={(e) => this.props.toggleSubscriptionState()}>Subscribe</a></li>
-                <li role="menuitem"><NavLink style={{color: '#ffbc27'}} to="/blog/page/1" role="menuitem">Blog</NavLink></li>
+                <li role="menuitem"><a href="" onClick={(e) => { e.preventDefault(); this.props.toggleSubscriptionState() }}>Subscribe</a></li>
+                <li role="menuitem"><NavLink style={{color: '#ffbc27'}} to={'/blog/gallery/technology/computerengineering/1'} role="menuitem">Blog</NavLink></li>
                 <li role="menuitem">
                     <form id="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                         <input type="hidden" name="cmd" value="_s-xclick" />

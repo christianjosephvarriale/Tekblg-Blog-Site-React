@@ -10,6 +10,7 @@ import LazyLoad from 'react-lazyload';
 
 import { connect } from 'react-redux';
 import '../css/code.css'
+import { NavLink, BrowserRouter as Router } from 'react-router-dom';
 
 // define jQuery as part of the window
 window.jQuery = jquery;
@@ -125,7 +126,12 @@ class LandingPage extends Component {
                         <div class="intro-text">
                             <img style={{ width: '90%', maxWidth:500, zIndex: 1}} src={`https://images.ctfassets.net/5zy76n4olg5p/3clyQJTsKfgFoqZICDPR4A/649de57c7198efc28bed05b1bed43bed/tekblg.png?w=${Math.round(window.innerWidth) > 500 ? 500 : Math.round(window.innerWidth)}&fm=jpg&fl=progressive`} />
                             <p style={{fontWeight: 600, color: '#f43044', width:'100%', marginBottom: 60}} id='text'></p>
-                            <Button handleClick={(e) => this.props.toggleSubscriptionState()} label={'Subscribe'}/> 
+                            
+                            <Router forceRefresh="true">
+                                <NavLink to={'/blog/gallery/technology/computerengineering/1'}>
+                                    <Button label={'Go To Blog'}/> 
+                                </NavLink>
+                            </Router>
                         </div>
                     </section>
                     <main id="main">

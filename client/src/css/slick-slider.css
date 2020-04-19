@@ -192,13 +192,15 @@
   }
   
   .featured-slider .slick-prev {
+    display: none !important;
     left: -120px;
-    background-image: url(../img/icons/icon-arrow-left.svg);
+    background-image: url('../img/icons/icon-arrow-left.svg');
   }
   
   .featured-slider .slick-next {
+    display: none !important;
     right: -120px;
-    background-image: url(../img/icons/icon-arrow-right.svg);
+    background-image: url('../img/icons/icon-arrow-right.svg');
   }
   
   .featured-slide {

@@ -19,6 +19,7 @@ const generateColor = () => { return colorArray [ Math.round(Math.random() * (co
 class FeaturedBlogPost extends Component {
     render() {
         const state = this.props;
+        const escaped_title = state.title.replace(/\./g,'&#46;').replace(/\//g,'&#47;')
 
         // data hasn't arrived
         if (Object.keys(state).length === 0 && state.constructor === Object) {
@@ -40,16 +41,16 @@ class FeaturedBlogPost extends Component {
                         <div className={'entry-background'} style={{ backgroundImage: 'url(' + headerImg + ')' }}></div></LazyLoad>
                         
                         <div className={'entry-content'}>
-                            <span className={'entry-category'}><NavLink to={'/blog/post/' + state.id}> {state.catagory} </NavLink> </span>
+                            <span className={'entry-category'}>{state.catagory}</span>
 
-                            <h1><NavLink to={'/blog/post/' + state.id}>{state.title}</NavLink></h1>
+                            <h1><NavLink to={`/blog/article/${encodeURI(state.catagory)}/computerengineering/${state.id}`}>{state.title}</NavLink></h1>
 
                             <div className={'entry-info'}>
-                                <NavLink to={'/blog/post/' + state.id} className={'entry-profile-pic'}>
+                                <div className={'entry-profile-pic'}>
                                     <Avatar style={{backgroundColor: generateColor() }}> {generateInitials()} </Avatar>
-                                </NavLink>
+                                </div>
                                 <ul className={'entry-meta'}>
-                                    <li><NavLink to={'/blog/post/' + state.id}>{state.author}</NavLink></li>
+                                    <li>{state.author}</li>
                                     <li>{state.date}</li>
                                 </ul>
                             </div>

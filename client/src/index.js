@@ -5,15 +5,22 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store'
-import { render } from 'react-snapshot';
+import { hydrate, render } from "react-dom";
 
-render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>
-, document.getElementById('root'));
+const rootElement = document.getElementById("root");
+if (rootElement.hasChildNodes()) {
+  hydrate(<Provider store={store}>
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+</Provider>, rootElement);
+} else {
+  render(<Provider store={store}>
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+</Provider>, rootElement);
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

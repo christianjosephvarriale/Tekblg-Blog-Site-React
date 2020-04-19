@@ -9,22 +9,13 @@ import { connect } from 'react-redux';
 import { fetchAllPosts } from '../actions/postActions';
 import LazyLoad from 'react-lazyload'
 import Pagniation from './pagination';
+import { Helmet } from 'react-helmet';
 
 class Blog extends Component {
 
     componentDidMount() {
 
         this.props.fetchAllPosts() 
-
-        // wait until state is changed before loading javascript
-        setTimeout(() => {
-
-            console.log(document.getElementById("metaDes"));
-            // change the title and meta
-            document.getElementById("metaDes").setAttribute("content", "Here you'll find blog posts ranging from general tutorials to algorithms to insights. Enjoy");
-            document.querySelector('title').text = "Blog Posts - In Depth Design";
-        }, 500);
-
 
         setTimeout(() => {
             require("../js/blog.js");
@@ -46,8 +37,8 @@ class Blog extends Component {
         });
 
         var length = posts.length;
+        let schemaData;
 
-        console.log(`Here are the posts: ${JSON.stringify(posts)}`)
 
         if (posts && featPosts) {
             
@@ -77,10 +68,51 @@ class Blog extends Component {
                     )
                 } 
             );
+
+            schemaData = slcdPostLst.map((post) =>  
+            { 
+                let title = post.title;
+                if ( post.title.length > 80 ) { /* truncate the length for readability */
+                    title = title.slice(0, 80) + '...'
+                } 
+
+                let body = post.body;
+                if ( post.body.length > 80 ) { /* truncate the length for readability */
+                    body = body.slice(0, 80) + '...'
+                } 
+                return (
+                    `{
+                        "@type":"BlogPosting",
+                        "headline": "${post.title}",
+                        "datePublished": "${post.date}",
+                        "articleBody": "${escape(body)}",
+                        "image":"${post.headerImg}",
+                        "wordcount": "${body.length}",
+                        "url": "https://tekblg.com/blog/article/${post.catagory}/computerengineering/${post.id}",
+                        "pageStart":"1",
+                        "pageEnd":"1",
+                        "keywords": "${post.tags.join(' ')}",
+                        "genre":"${post.catagory}", 
+                    }`
+                )
+            }) 
         }
 
         return (
                 <div id="top">
+
+                        <Helmet>
+
+                        <script type="application/ld+json">{`
+                            {
+                                "@context":"http://schema.org",
+                                "@type":"Blog",
+                                "@id":"${window.location.href}",
+                                "headline":"Computer Engineering technical posts",
+                                "description":"Here are some blog posts relating to NodeJS, SEO, and technology in general",
+                                "Blog": "[${schemaData}]"
+                        `}</script>
+                        </Helmet>
 
                         <section className={'s-featured'}>
                             <div className={styles.row}>

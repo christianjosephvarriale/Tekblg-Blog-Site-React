@@ -26,6 +26,29 @@ export const fetchAllPosts = () => dispatch => {
 
             // update the state of the app with the blog entries
             for (let i=0; i < prevPosts.length; i++) {
+
+                const rawRichTextField = prevPosts[i].fields.body;
+
+                let options = {
+                    renderNode: {
+                    'embedded-asset-block': (node) =>
+                        `<img style="width:100%" src="${node.data.target.fields.file.url}"/>`,
+                    [BLOCKS.PARAGRAPH]: (node, next) => {
+                        if ( ( node.content[0].marks.length > 0 ) && ( node.content[0].marks[0].type === 'code' ) ) {
+                                return ( `<pre class="prettyprint">${next(node.content)}</pre>` )
+                        } else {
+                            return ( `<p>${next(node.content)}</p>` )
+                        }
+                    },
+                    [BLOCKS.HEADING_3]: (node, _) => 
+                        `<h3 class="blog-heading" id="${node.content[0].value.trim()}">${node.content[0].value}</h3>`,
+                    [BLOCKS.HEADING_1]: (node, _) => 
+                        `<h1 class="blog-heading" id="${node.content[0].value.trim()}">${node.content[0].value}</h1>`,
+                    }
+                }
+
+                const body = documentToHtmlString(rawRichTextField, options);
+
                 let entry = {
                     'id': prevPosts[i].fields.id,
                     'author':prevPosts[i].fields.author,
@@ -36,6 +59,7 @@ export const fetchAllPosts = () => dispatch => {
                     'title':prevPosts[i].fields.title,
                     'id':prevPosts[i].fields.id,
                     'tags':prevPosts[i].fields.tags,
+                    'body':body
                 }
 
                  // this is a featured post

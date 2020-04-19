@@ -5,6 +5,7 @@ import Textfield from './textInput';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import LazyLoad from 'react-lazyload';
+import { NavLink, BrowserRouter as Router } from 'react-router-dom';
 
 let year = new Date().getFullYear();
 
@@ -196,11 +197,13 @@ class Footer extends Component {
                                     </div>
                                     <div class="col-lg-6">
                                         <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
-                                        <a style={{color:'#888 !important'}} href="#intro" class="scrollto">Home</a>
-                                        <a style={{color:'#888 !important'}} href="#about" class="scrollto">About</a>
-                                        <a style={{color:'#888 !important'}} href="#contact" class="scrollto">About</a>
-                                        <a style={{color:'#888 !important'}} href="#">Privacy Policy</a>
-                                        <a style={{color:'#888 !important'}} href="#">Terms of Use</a>
+                                        <Router forceRefresh="true">
+                                            <a style={{color:'#888 !important'}} href="#intro" class="scrollto">Home</a>
+                                            <a style={{color:'#888 !important'}} href="#about" class="scrollto">About</a>
+                                            <a style={{color:'#888 !important'}} href="#contact" class="scrollto">Contact</a>
+                                            <NavLink style={{color:'#888 !important'}} to="/privacy-policy">Privacy Policy</NavLink>
+                                            <NavLink style={{color:'#888 !important'}} to="/terms-of-use">Terms of Use</NavLink>
+                                        </Router>
                                         </nav>
                                     </div>
                                     </div>

@@ -60,6 +60,7 @@
     "react-redux": "^7.1.3",
     "react-router-dom": "^5.0.1",
     "react-select": "^3.0.4",
+    "react-snap": "^1.23.0",
     "react-snapshot": "^1.3.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
@@ -69,6 +70,7 @@
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "1.2.3",
     "ts-pnp": "1.1.2",
+    "typeit": "^7.0.2",
     "typescript": "^3.5.1",
     "url-loader": "1.1.2",
     "webpack": "4.29.6",
@@ -78,8 +80,12 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js && react-snapshot",
-    "test": "node scripts/test.js"
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js",
+    "postbuild": "react-snap"
+  },
+  "reactSnap": {
+    "waitFor": 5000
   },
   "browserslist": {
     "production": [
