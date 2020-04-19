@@ -7,7 +7,6 @@ import FeaturedBlogPost from './featuredBlogPost';
 import BlogPost from './blogPost';
 import { connect } from 'react-redux';
 import { fetchAllPosts } from '../actions/postActions';
-import LazyLoad from 'react-lazyload'
 import Pagniation from './pagination';
 import { Helmet } from 'react-helmet';
 
@@ -93,6 +92,21 @@ class Blog extends Component {
                         "pageEnd":"1",
                         "keywords": "${post.tags.join(' ')}",
                         "genre":"${post.catagory}", 
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "tekblg",
+                            "url": "http://www.tekblg.com",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://tekblg.com/static/media/t.889a1a8a.png",
+                                "width":"40",
+                                "height":"40"
+                            }
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "tekblg"
+                        }
                     }`
                 )
             }) 
@@ -110,7 +124,8 @@ class Blog extends Component {
                                 "@id":"${window.location.href}",
                                 "headline":"Computer Engineering technical posts",
                                 "description":"Here are some blog posts relating to NodeJS, SEO, and technology in general",
-                                "Blog": "[${schemaData}]"
+                                "blogPost": [${schemaData}]
+                            }  
                         `}</script>
                         </Helmet>
 

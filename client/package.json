@@ -81,11 +81,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "postbuild": "react-snap"
-  },
-  "reactSnap": {
-    "waitFor": 5000
+    "test": "node scripts/test.js"
   },
   "browserslist": {
     "production": [
