@@ -1,0 +1,13 @@
+export const POST_ACTIONS = {
+  FETCH_ALL: 'FETCH_POSTS',
+  FETCH: 'FETCH_POST'
+}
+
+export const SUBSCRIPTION_ACTIONS = {
+  TOGGLE_OPEN: 'TOGGLE_OPEN'
+}
+
+export const APP_ACTIONS = {
+  MOBILE_ON: 'MOBILE_ON',
+  MOBILE_OFF: 'MOBILE_OFF'
+}
