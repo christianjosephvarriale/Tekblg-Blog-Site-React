@@ -4,15 +4,16 @@ class ToolsController < ApplicationController
 
     # calls the yt downloader with appropriate args
     def download
-        id = SecureRandom.random_number(1_000_000_000_000)
+        @id = SecureRandom.random_number(1_000_000_000_000)
         progress = 0
-        Video.create( id: id, url: params[:url], progress: progress)
+        Video.create( id: @id, url: params[:url], progress: progress)
 
-        child_pid = fork do
-            system "python3 python/youtube_downloader.py #{id} #{params[:url]}"
-            exit
-        end
-        render json: { id: id }
+        Thread.start { call_python }
+        render json: { id: @id }
+    end
+
+    def call_python
+        system "python3 python/youtube_downloader.py #{@id} #{params[:url]}"
     end
 
     # get progress from front end polling
