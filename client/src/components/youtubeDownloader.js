@@ -76,7 +76,7 @@ class YoutubeDownloader extends Component {
             })
         } else if ( res.data == 1 ) {
 
-           window.location.href = `http://tekblg.com/tools/get_video/${this.state.id}`;
+           window.location.href = `https://tekblg.com/tools/get_video/${this.state.id}`;
               
             this.setState({
                 loading: false,
@@ -113,7 +113,7 @@ class YoutubeDownloader extends Component {
 
             setTimeout(() => { /* callback to runner container */
               document.querySelector('.runner-container').style.top = '300px';
-            }, 300)
+            }, 400)
 
             return (
               <div style={{marginBottom: 80}} className={classes.container}>

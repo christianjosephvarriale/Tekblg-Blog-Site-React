@@ -4,13 +4,13 @@ import time
 import requests
 import os
 
-def complete_cb(self, stream, chuncks):
+def complete_cb():
     ''' calls the endpoint with final val '''
 
-    requests.post('http://tekblg.com//tools/update_progress', data={ 'id' : vid_id, 'progress' : 1 }, verify=False)
+    requests.post('http://localhost:5100/tools/update_progress', data={ 'id' : vid_id, 'progress' : 1 }, verify=False)
 
 
-def progress_cb(self, stream, chuncks, bytes_remaining):
+def progress_cb(self, stream, fh, bytes_remaining):
     ''' callback to track the data progress '''
 
     global start
@@ -20,7 +20,7 @@ def progress_cb(self, stream, chuncks, bytes_remaining):
     if time_elasped > 1: # make updated progress request to webhook
         file_size = stream.filesize
         percentage_downloaded = round( ( ( float(file_size - bytes_remaining) ) / float(file_size)), 2)
-        requests.post('http://tekblg.com/tools/update_progress', data={ 'id' : vid_id, 'progress' : percentage_downloaded }, verify=False)
+        requests.post('http://localhost:5100/tools/update_progress', data={ 'id' : vid_id, 'progress' : percentage_downloaded }, verify=False)
         start = time.time()
 
 start = time.time()
