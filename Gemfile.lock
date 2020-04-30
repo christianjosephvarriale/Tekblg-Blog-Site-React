@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/metalels/send_file_with_range.git
+  revision: 008acf58ac5e7b4be1f2319ef3fcad5187a8759d
+  branch: rails51
+  specs:
+    send_file_with_range (1.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -202,6 +209,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.4.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -226,8 +234,10 @@ DEPENDENCIES
   pg
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
+  send_file_with_range!
   spring
   spring-watcher-listen (~> 2.0.0)
+  sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION

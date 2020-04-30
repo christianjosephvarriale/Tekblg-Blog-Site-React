@@ -86,6 +86,14 @@ class NavBar extends Component {
                 <h2 class="header__nav-heading h6">Navigate to</h2>
 
                 <ul style={{display:'block'}}class="header__nav">
+
+                <li class="has-children">
+                    <a href="#0" title="">Tools</a>
+                    <ul class="sub-menu">       
+                        {/* <li><NavLink to="/amazon automation" role="menuitem">Amazon Automation</NavLink></li> */}
+                        <li><NavLink to="/youtube downloader" role="menuitem">Youtube Video Downloader</NavLink></li>
+                    </ul>
+                </li>
                 
                 <li role="menuitem"><a href="" onClick={(e) => { e.preventDefault(); this.props.toggleSubscriptionState() }}>Subscribe</a></li>
                 <li role="menuitem"><NavLink style={{color: '#ffbc27'}} to={'/blog/gallery/technology/computerengineering/1'} role="menuitem">Blog</NavLink></li>
@@ -102,16 +110,8 @@ class NavBar extends Component {
                 <li role="menuitem"><a href="#pricing">Pricing</a></li>
                 <li role="menuitem"><a href="#team">Team</a></li>
                 <li role="menuitem"><a href="#gallery">Gallery</a></li>
-                <li role="menuitem"><a href="#contact">Contact</a></li>
+                <li role="menuitem"><a href="#contact">Contact</a></li> */}
 
-                <li role="menuitem"><NavLink to="/blog/page/1" role="menuitem">Blog</NavLink></li>
-                <li class="has-children">
-                    <a href="#0" title="">Products</a>
-                    <ul class="sub-menu">       
-                        <li><NavLink to="/amazonTool" role="menuitem">Amazon</NavLink></li>
-                        <li><NavLink to="/yahooTool" role="menuitem">Yahoo</NavLink></li>
-                    </ul>
-                </li> */}
                 </ul> 
 
                 <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>

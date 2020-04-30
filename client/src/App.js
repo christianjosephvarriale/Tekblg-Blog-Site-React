@@ -3,7 +3,6 @@ import LandingPage from './components/landingPage';
 import Blog from './components/blog.js';
 import BlogPage from './components/blogPage.js';
 import NavBar from './components/navBar.js';
-import AmazonScraper from '../src/components/amazonScraper.js';
 import { Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom';
 import Footer from '../src/components/footer'
 import './App.css';
@@ -13,6 +12,8 @@ import $ from 'jquery';
 import Page404 from './components/404.js';
 import PrivacyPolicy from './components/privacy_policy';
 import TermsOfUse from './components/terms_of_use';
+import AmazonScraper from './components/amazonScraper';
+import youtubeDownloader from './components/youtubeDownloader';
 
 class App extends Component {
   constructor(props) {
@@ -70,11 +71,12 @@ class App extends Component {
               <Router forceRefresh="true">
                 <Switch>
                   <Route exact path='/' component={LandingPage} />
-                  <Route exact path='/amazonTool' component={AmazonScraper} />
                   <Route path='/blog/gallery/technology/computerengineering/:pageId' component={Blog} />
                   <Route path="/blog/article/:catagory/computerengineering/:blogId" component={BlogPage} /> 
                   <Route exact path="/privacy-policy" component={PrivacyPolicy} />
                   <Route exact path="/terms-of-use" component={TermsOfUse} />
+                  <Route path="/amazon automation" component={AmazonScraper} />
+                  <Route path="/youtube downloader" component={youtubeDownloader} />
                   <Route status={404} path="/404" component={Page404} />
                   <Redirect to="/404" />
                 </Switch>

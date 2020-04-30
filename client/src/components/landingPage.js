@@ -121,6 +121,7 @@ class LandingPage extends Component {
                 <div>
 
                     <Helmet>
+                        <meta name="description"  content="We build awesome code using Javascript libraries like NodesJS detailing applicational technical blog posts within computer engineering adapted from the University of Waterloo's Engineering ciriculum" />
                         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
                     </Helmet>
 
@@ -192,7 +193,7 @@ class LandingPage extends Component {
                                 <div class="icon"><LazyLoad placeholder={<p>Lazy Loading...</p>}><img src={'https://images.ctfassets.net/5zy76n4olg5p/5UuVvh3u6G0GDMGhs5sI2x/75355590ebf88e9fac7961b3ade96ebf/mining.svg?w=150&fm=jpg&fl=progressive'} /></LazyLoad></div>
                                 <div>
                                     <h4 class="title">Ready to use tools and components</h4>
-                                    <p class="description"> Don't re-invent the wheel. We've got everything from Data Pipelines and hardware schematics, to generic handy software</p>
+                                    <p class="description"> Don't re-invent the wheel. We've got everything from Data Pipelines and hardware schematics, to generic handy software with code explainations</p>
                                 </div>
                                 </div>
                             </div>

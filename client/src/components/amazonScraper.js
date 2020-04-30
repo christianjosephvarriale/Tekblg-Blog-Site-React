@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import Loader from './loader';
 import tutorialVid from '../img/tutorialVid.mp4'
+import { Helmet } from 'react-helmet';
 
 const styles = {
     container: {
@@ -86,6 +87,11 @@ class AmazonScraper extends Component {
         } else {
             return ( 
                 <div className={classes.container}>  
+
+                    <Helmet>
+                      <meta name="description" content="Amazon automation API to extract reviews from any page and export them to a CSV file. Perfect for vendors looking to integrate Amazon with 3rd party platforms" />
+                    </Helmet>
+
                     <p className={classes.margin}>
                       Enter a url to scrape amazon for all comment information
                     </p>
