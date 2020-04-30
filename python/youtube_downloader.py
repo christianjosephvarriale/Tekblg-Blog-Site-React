@@ -19,7 +19,7 @@ def progress_cb(chunk, fh, bytes_remaining):
     time_elasped = current - start
 
     if time_elasped > 1: # make updated progress request to webhook
-        percentage_downloaded = round( ( ( float(fle_size - bytes_remaining) ) / float(file_size)), 2)
+        percentage_downloaded = round( ( ( float(fle_size - bytes_remaining) ) / float(fle_size)), 2)
         requests.post('http://localhost:5100/tools/update_progress', data={ 'id' : vid_id, 'progress' : percentage_downloaded }, verify=False)
         start = time.time()
 
