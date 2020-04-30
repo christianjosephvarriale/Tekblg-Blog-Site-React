@@ -119,7 +119,7 @@ class Footer extends Component {
 
                 <section id="contact">
                                 <div class="container">
-                                <div class="row wow fadeInUp">
+                                <div style={{visibility:'visible !important'}}class="row wow fadeInUp">
 
                                     <div class="col-lg-4 col-md-4">
                                     <div class="contact-about">

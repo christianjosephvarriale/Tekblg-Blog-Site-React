@@ -7,10 +7,10 @@ import os
 def complete_cb():
     ''' calls the endpoint with final val '''
 
-    requests.post('http://localhost:5100/tools/update_progress', data={ 'id' : vid_id, 'progress' : 1 }, verify=False)
+    requests.post('http://tekblg.com/tools/update_progress', data={ 'id' : vid_id, 'progress' : 1 }, verify=False)
 
 
-def progress_cb(chunk, fh, bytes_remaining):
+def progress_cb(self, chunk, fh, bytes_remaining):
     ''' callback to track the data progress '''
 
     global start
@@ -20,7 +20,7 @@ def progress_cb(chunk, fh, bytes_remaining):
 
     if time_elasped > 1: # make updated progress request to webhook
         percentage_downloaded = round( ( ( float(fle_size - bytes_remaining) ) / float(fle_size)), 2)
-        requests.post('http://localhost:5100/tools/update_progress', data={ 'id' : vid_id, 'progress' : percentage_downloaded }, verify=False)
+        requests.post('http://tekblg.com/tools/update_progress', data={ 'id' : vid_id, 'progress' : percentage_downloaded }, verify=False)
         start = time.time()
 
 start = time.time()

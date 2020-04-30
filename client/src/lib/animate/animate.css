@@ -679,7 +679,7 @@
 }
 
 .fadeInUp {
-  animation-name: fadeInUp;
+  animation-name: fadeInUp !important;
 }
 
 @keyframes fadeInUpBig {
