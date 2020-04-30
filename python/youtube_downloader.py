@@ -10,16 +10,16 @@ def complete_cb():
     requests.post('http://localhost:5100/tools/update_progress', data={ 'id' : vid_id, 'progress' : 1 }, verify=False)
 
 
-def progress_cb(self, stream, fh, bytes_remaining):
+def progress_cb(chunk, fh, bytes_remaining):
     ''' callback to track the data progress '''
 
     global start
+    global fle_size
     current = time.time()
     time_elasped = current - start
 
     if time_elasped > 1: # make updated progress request to webhook
-        file_size = stream.filesize
-        percentage_downloaded = round( ( ( float(file_size - bytes_remaining) ) / float(file_size)), 2)
+        percentage_downloaded = round( ( ( float(fle_size - bytes_remaining) ) / float(file_size)), 2)
         requests.post('http://localhost:5100/tools/update_progress', data={ 'id' : vid_id, 'progress' : percentage_downloaded }, verify=False)
         start = time.time()
 
@@ -33,5 +33,7 @@ yt = YouTube(
     on_complete_callback=complete_cb
 )
 
-yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download(output_path="public", filename=f'video-{vid_id}')
+fle = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
+fle_size = fle.filesize
+fle.download(output_path="public", filename=f'video-{vid_id}')
 
