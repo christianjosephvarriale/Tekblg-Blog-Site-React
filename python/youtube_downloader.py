@@ -4,13 +4,13 @@ import time
 import requests
 import os
 
-def complete_cb(stream, chuncks):
+def complete_cb(self, stream, chuncks):
     ''' calls the endpoint with final val '''
 
     requests.post('http://tekblg.com//tools/update_progress', data={ 'id' : vid_id, 'progress' : 1 }, verify=False)
 
 
-def progress_cb(stream, chuncks, bytes_remaining):
+def progress_cb(self, stream, chuncks, bytes_remaining):
     ''' callback to track the data progress '''
 
     global start
