@@ -113,7 +113,7 @@ class YoutubeDownloader extends Component {
 
             setTimeout(() => { /* callback to runner container */
               document.querySelector('.runner-container').style.top = '300px';
-            }, 200)
+            }, 300)
 
             return (
               <div style={{marginBottom: 80}} className={classes.container}>
