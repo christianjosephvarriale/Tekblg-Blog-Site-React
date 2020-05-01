@@ -7,6 +7,8 @@ import { Helmet } from 'react-helmet';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { Redirect } from 'react-router-dom';
 import '../css/dinosaur.css'
+import walkthrough from '../img/walkthrough.gif'
+const WOW = require("../lib/wow/wow.min.js");
 
 const styles = {
     container: {
@@ -53,6 +55,8 @@ class YoutubeDownloader extends Component {
     };
 
     componentDidMount() {
+
+      new WOW().init()
       window.onkeydown = function(e){
         return !(e.keyCode == 32);
       }
@@ -110,27 +114,18 @@ class YoutubeDownloader extends Component {
         const { classes } = this.props;
         if (this.state.loading) {
 
+            let game;
+            const isChrome = ((navigator.userAgent.toLowerCase().indexOf('chrome') > -1) &&(navigator.vendor.toLowerCase().indexOf("google") > -1));
 
-            setTimeout(() => { /* callback to runner container */
-              document.querySelector('.runner-container').style.top = '300px';
-            }, 400)
+            if ( isChrome ) {
 
-            return (
-              <div style={{marginBottom: 80}} className={classes.container}>
-
-                    <Helmet>
-
-                      <script src="https://cdn.elg.im/t-rex/scripts/runner.js"></script>
-                      <script async defer src="https://cdn.elg.im/js/script.js"></script>
-                    </Helmet>
-
-                <h2 style={{textAlign: 'center' }}> We are Loading some awesome data for you </h2>
-                <LinearProgress style={{width: '100%'}} color="secondary" variant="determinate" value={this.state.progress} />
-              
-                <header style={{marginBottom: 30}}>
-                  <h1 style={{textAlign:'center'}}>T-Rex, Run!</h1>
-                  <p style={{textAlign:'center'}}>The Google dinosaur game(T-rex game) <br />Press <strong> Space </strong> key or <strong> Tap </strong> the T-rex to jump.</p>
-                </header>
+              game = ( 
+                <>
+                <Helmet>
+                  <script onLoad="document.querySelector('.runner-container').style.top = '400px'"src="https://cdn.elg.im/t-rex/scripts/runner.js"></script>
+                  <script async defer src="https://cdn.elg.im/js/script.js"></script>
+                </Helmet>
+               
                   <div style={{padding:20}}></div>
                     <div id="main-frame-error" class="interstitial-wrapper" jstcache="0">
                   <img class="icon icon-offline" jseval="updateIconClass(this.classList, iconClass)" jstcache="1" style={{visibility: "hidden"}} />
@@ -159,7 +154,24 @@ class YoutubeDownloader extends Component {
                       <audio id="offline-sound-press" src="https://cdn.elg.im/t-rex/sounds/offline-sound-press.mp3"></audio>
                       <audio id="offline-sound-hit" src="https://cdn.elg.im/t-rex/sounds/offline-sound-hit.mp3"></audio>
                       <audio id="offline-sound-reached" src="https://cdn.elg.im/t-rex/sounds/offline-sound-reached.mp3"></audio>
-                    </div>
+                </div> </> )
+            } else {
+              game = <p> We're sorry, this awesome game only works in Chrome</p>
+            }
+
+            return (
+              <div style={{marginBottom: 80}} className={classes.container}>
+
+                <h2 style={{textAlign: 'center' }}> We are Loading some awesome data for you </h2>
+                <LinearProgress style={{width: '100%'}} color="secondary" variant="determinate" value={this.state.progress} />
+              
+                <header style={{marginBottom: 130}}>
+                  <h1 style={{textAlign:'center'}}>T-Rex, Run!</h1>
+                  <p style={{textAlign:'center'}}>The Google dinosaur game(T-rex game) <br />Press <strong> Space </strong> key or <strong> Tap </strong>( for mobile ) the T-rex to jump.</p>
+                </header>
+
+                { game }
+
               </div>
             )
         } else {
@@ -184,9 +196,14 @@ class YoutubeDownloader extends Component {
                     </p>
                     <TextInput handleChange={this.handleChange} name={'url'} value={this.state.url} />
                     
-                    <div style={{display:'flex', justifyContent: 'center', margin: 30}}>
+                    <div style={{display:'flex', alignItems: 'center', margin: 30}}>
                       <Button label={'Download'} handleClick={this.handleDownload}/>
                     </div>
+
+                    {/* <div className={'wow zoomIn'}>
+                      <h2 style={{textAlign: 'center', marginBottom:40}}> Here's a walkthrough on how to use the tool</h2>
+                      <img src={walkthrough} />
+                    </div> */}
 
                     <p style={{textAlign: 'center' }}> Although the application is free, there is a cost for the maintenance of this great application. Any donations are appreciated. Sincerely, the Tekblg Team </p>
 
