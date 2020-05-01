@@ -80,11 +80,7 @@ class YoutubeDownloader extends Component {
             })
         } else if ( res.data == 100 ) {
 
-           if ( this.props.mobile ) {
-              window.location.href = `https://tekblg.com/tekblg-${this.state.id}.mp4`;
-           } else {
-              window.location.href = `https://tekblg.com/tools/get_video/${this.state.id}`;
-           }
+            window.location.href = `https://tekblg.com/tools/get_video/${this.state.id}`;
               
             this.setState({
                 loading: false,
@@ -131,7 +127,7 @@ class YoutubeDownloader extends Component {
 
                   <header style={{marginBottom: 30}}>
                     <h1 style={{textAlign:'center'}}>T-Rex, Run!</h1>
-                    <p style={{textAlign:'center'}}>The Google dinosaur game(T-rex game) <br />Press <strong> Space </strong> key or <strong> Tap </strong>( for mobile ) the T-rex to jump.</p>
+                    <p style={{textAlign:'center'}}>The Google dinosaur game(T-rex game) <br />Press <strong> Space </strong> to jump.</p>
                   </header>
                
                   <div style={{padding:20}}></div>
@@ -191,7 +187,7 @@ class YoutubeDownloader extends Component {
               </div>
               )
             }
-
+          
             return (
               <div style={{marginBottom: 80}} className={classes.container}>
 
@@ -209,6 +205,34 @@ class YoutubeDownloader extends Component {
               if (elem) { elem.parentNode.removeChild(elem) }
             }, 0)
 
+            let body;
+            if ( this.props.mobile ) {
+              body = ( <p> Sorry, this application only works on Desktop </p> )
+            } else {
+              body = (
+                <>
+                <h1 style={{textAlign: 'center' }}>Youtube Video Downloader Tool</h1>
+
+                <p style={{textAlign: 'center' }} className={classes.margin}>
+                  Enter a url to download a video from. We will download the highest resolution available ( It's super quick )
+                </p>
+                <TextInput handleChange={this.handleChange} name={'url'} value={this.state.url} />
+                
+                <div style={{display:'flex', justifyContent: 'center', margin: 30}}>
+                  <Button label={'Download'} handleClick={this.handleDownload}/>
+                </div>
+
+                <p style={{textAlign: 'center' }}> Although the application is free, there is a cost for the maintenance of this great application. Any donations are appreciated. Sincerely, the Tekblg Team </p>
+
+                <form id="paypal" className={classes.buttonPositioning} action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick" />
+                <input type="hidden" name="hosted_button_id" value="KU96VMCNZELB6" />
+                <Button handleClick={this.handleSubmit} label={'Donate'}/>
+                </form>
+                </>
+              )
+            }
+
             return ( 
                 <div className={classes.container}>  
 
@@ -217,29 +241,7 @@ class YoutubeDownloader extends Component {
                       <meta name="description" content="Youtube Downloader perfect to download all your favourite videos from youtube with a safe, no ads site" />
                     </Helmet>
 
-                    <h1 style={{textAlign: 'center' }}>Youtube Video Downloader Tool</h1>
-
-                    <p style={{textAlign: 'center' }} className={classes.margin}>
-                      Enter a url to download a video from. We will download the highest resolution available ( It's super quick )
-                    </p>
-                    <TextInput handleChange={this.handleChange} name={'url'} value={this.state.url} />
-                    
-                    <div style={{display:'flex', justifyContent: 'center', margin: 30}}>
-                      <Button label={'Download'} handleClick={this.handleDownload}/>
-                    </div>
-
-                    {/* <div className={'wow zoomIn'}>
-                      <h2 style={{textAlign: 'center', marginBottom:40}}> Here's a walkthrough on how to use the tool</h2>
-                      <img src={walkthrough} />
-                    </div> */}
-
-                    <p style={{textAlign: 'center' }}> Although the application is free, there is a cost for the maintenance of this great application. Any donations are appreciated. Sincerely, the Tekblg Team </p>
-
-                    <form id="paypal" className={classes.buttonPositioning} action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                    <input type="hidden" name="cmd" value="_s-xclick" />
-                    <input type="hidden" name="hosted_button_id" value="KU96VMCNZELB6" />
-                    <Button handleClick={this.handleSubmit} label={'Donate'}/>
-                    </form>
+                    { body }
 
                 </div>
             )
