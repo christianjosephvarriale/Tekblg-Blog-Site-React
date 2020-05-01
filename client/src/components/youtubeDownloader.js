@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import '../css/dinosaur.css'
 import { connect } from 'react-redux';
+import '../css/emoji.css'
 const WOW = require("../lib/wow/wow.min.js");
 const isChrome = (navigator.userAgent.toLowerCase().indexOf('chrome') > -1);
 
@@ -207,11 +208,24 @@ class YoutubeDownloader extends Component {
 
             let body;
             if ( this.props.mobile ) {
-              body = ( <p> Sorry, this application only works on Desktop </p> )
+              body = ( 
+              <>
+              <p style={{textAlign: 'center', marginBottom: 30}}> Sorry, this application only works on Desktop </p>
+              <div style={{width:'100%', display:'flex', justifyContent:'center'}}>
+                <div class="emoji  emoji--sad">
+                  <div class="emoji__face">
+                    <div class="emoji__eyebrows"></div>
+                    <div class="emoji__eyes"></div>
+                    <div class="emoji__mouth"></div>
+                  </div>
+                </div>
+              </div>
+
+              </>
+              )
             } else {
               body = (
                 <>
-                <h1 style={{textAlign: 'center' }}>Youtube Video Downloader Tool</h1>
 
                 <p style={{textAlign: 'center' }} className={classes.margin}>
                   Enter a url to download a video from. We will download the highest resolution available ( It's super quick )
@@ -240,6 +254,8 @@ class YoutubeDownloader extends Component {
                       <link href="https://cdn.elg.im/css/style.css" rel="stylesheet" />
                       <meta name="description" content="Youtube Downloader perfect to download all your favourite videos from youtube with a safe, no ads site" />
                     </Helmet>
+
+                    <h1 style={{textAlign: 'center' }}>Youtube Video Downloader Tool</h1>
 
                     { body }
 
