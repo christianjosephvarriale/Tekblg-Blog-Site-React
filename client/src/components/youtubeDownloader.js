@@ -68,7 +68,7 @@ class YoutubeDownloader extends Component {
 
         console.log(res.data)
 
-        if ( res.data != 1 ) { /* update the percentage loaded */
+        if ( res.data != 100 ) { /* update the percentage loaded */
             const progress = ( res.data )
             this.setState({
                 progress: progress
