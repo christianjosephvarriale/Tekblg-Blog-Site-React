@@ -7,7 +7,7 @@ import os
 def complete_cb(self, fh):
     ''' calls the endpoint with final val '''
 
-    requests.get(f'http://tekblg.com/tools/update_progress/${vid_id}/100', verify=False)
+    requests.get(f'http://tekblg.com/tools/update_progress/{vid_id}/100', verify=False)
 
 
 def progress_cb(self, chunk, fh, bytes_remaining):
