@@ -21,6 +21,7 @@ def progress_cb(self, chunk, fh, bytes_remaining):
     if time_elasped > 1: # make updated progress request to webhook
         percentage_downloaded = round( ( ( float(fle_size - bytes_remaining) ) / float(fle_size)), 2)
         print(percentage_downloaded)
+        
         requests.get(f'http://tekblg.com/tools/update_progress/{vid_id}/{percentage_downloaded}', verify=False)
         start = time.time()
 
