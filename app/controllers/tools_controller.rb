@@ -1,6 +1,5 @@
 class ToolsController < ApplicationController
     require "securerandom"
-    skip_before_action :verify_authenticity_token
 
     # calls the yt downloader with appropriate args
     def download
