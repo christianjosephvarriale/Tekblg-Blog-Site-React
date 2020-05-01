@@ -5,10 +5,10 @@ import { withStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { Redirect } from 'react-router-dom';
 import '../css/dinosaur.css'
-import walkthrough from '../img/walkthrough.gif'
+import { connect } from 'react-redux';
 const WOW = require("../lib/wow/wow.min.js");
+const isChrome = (navigator.userAgent.toLowerCase().indexOf('chrome') > -1);
 
 const styles = {
     container: {
@@ -80,7 +80,11 @@ class YoutubeDownloader extends Component {
             })
         } else if ( res.data == 100 ) {
 
-           window.location.href = `https://tekblg.com/tools/get_video/${this.state.id}`;
+           if ( isChrome && this.props.mobile ) {
+              window.location.href = `https://tekblg.com/tools/tekblg-${this.state.id}.mp4`;
+           } else {
+              window.location.href = `https://tekblg.com/tools/get_video/${this.state.id}`;
+           }
               
             this.setState({
                 loading: false,
@@ -115,7 +119,6 @@ class YoutubeDownloader extends Component {
         if (this.state.loading) {
 
             let game;
-            const isChrome = ((navigator.userAgent.toLowerCase().indexOf('chrome') > -1) &&(navigator.vendor.toLowerCase().indexOf("google") > -1));
 
             if ( isChrome ) {
 
@@ -219,4 +222,10 @@ class YoutubeDownloader extends Component {
     }
 }
 
-export default withStyles(styles)(YoutubeDownloader);
+const mapStateToProps = state => (
+  { 
+      mobile: state.AppReducer.mobile
+  }
+)
+
+export default connect(mapStateToProps, { })(withStyles(styles)(YoutubeDownloader));

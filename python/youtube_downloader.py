@@ -35,5 +35,5 @@ yt = YouTube(
 
 fle = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
 fle_size = fle.filesize
-fle.download(output_path="public", filename=f'video-{vid_id}')
+fle.download(output_path="public", filename=f'tekblg-{vid_id}')
 

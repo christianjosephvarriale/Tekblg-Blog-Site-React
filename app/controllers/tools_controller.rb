@@ -23,7 +23,7 @@ class ToolsController < ApplicationController
 
     # sends the video based on the id param
     def get_video
-        send_file "public/video-#{params[:id]}.mp4"
+        send_file "public/tekblg-#{params[:id]}.mp4"
     end
 
     # get progress from python web hook
