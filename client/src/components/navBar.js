@@ -87,13 +87,13 @@ class NavBar extends Component {
 
                 <ul style={{display:'block'}}class="header__nav">
 
-                <li class="has-children">
+                {/* <li class="has-children">
                     <a href="#0" title="">Tools</a>
                     <ul class="sub-menu">       
-                        {/* <li><NavLink to="/amazon automation" role="menuitem">Amazon Automation</NavLink></li> */}
+                        <li><NavLink to="/amazon automation" role="menuitem">Amazon Automation</NavLink></li> 
                         <li><NavLink to="/youtube downloader" role="menuitem">Youtube Video Downloader</NavLink></li>
                     </ul>
-                </li>
+                </li> */}
                 
                 <li role="menuitem"><a href="" onClick={(e) => { e.preventDefault(); this.props.toggleSubscriptionState() }}>Subscribe</a></li>
                 <li role="menuitem"><NavLink style={{color: '#ffbc27'}} to={'/blog/gallery/technology/computerengineering/1'} role="menuitem">Blog</NavLink></li>
