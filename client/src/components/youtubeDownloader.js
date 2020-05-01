@@ -74,7 +74,7 @@ class YoutubeDownloader extends Component {
                 progress: progress
 
             })
-        } else if ( res.data == 1 ) {
+        } else if ( res.data == 100 ) {
 
            window.location.href = `https://tekblg.com/tools/get_video/${this.state.id}`;
               
