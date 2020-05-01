@@ -199,7 +199,7 @@ class YoutubeDownloader extends Component {
                     </p>
                     <TextInput handleChange={this.handleChange} name={'url'} value={this.state.url} />
                     
-                    <div style={{display:'flex', alignItems: 'center', margin: 30}}>
+                    <div style={{display:'flex', justifyContent: 'center', margin: 30}}>
                       <Button label={'Download'} handleClick={this.handleDownload}/>
                     </div>
 

@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3ef81788dc87e92560cf1ef181623906",
+    "revision": "52b359e88e1fd01ebcd3285e9b50888e",
     "url": "/index.html"
   },
   {
-    "revision": "375e297b799a9898f5e3",
+    "revision": "4d17762b2053739c02f8",
     "url": "/static/css/main.5a38a650.chunk.css"
   },
   {
-    "revision": "4be739b675eef361a829",
-    "url": "/static/js/2.7eccfa53.chunk.js"
+    "revision": "f52208a5262e6c8d9d00",
+    "url": "/static/js/2.0813d156.chunk.js"
   },
   {
-    "revision": "375e297b799a9898f5e3",
-    "url": "/static/js/main.9b554d6a.chunk.js"
+    "revision": "4d17762b2053739c02f8",
+    "url": "/static/js/main.607d20d5.chunk.js"
   },
   {
     "revision": "baf82305e79f0dc9f8c1",
@@ -122,9 +122,5 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0c2e0fcb7d4bfd67595b300bf3389713",
     "url": "/static/media/tutorialVid.e10514f5.mp4"
-  },
-  {
-    "revision": "4cd4e289b51f4609954d0b7117d02758",
-    "url": "/static/media/walkthrough.da947745.gif"
   }
 ]);
