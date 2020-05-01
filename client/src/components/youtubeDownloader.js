@@ -80,8 +80,8 @@ class YoutubeDownloader extends Component {
             })
         } else if ( res.data == 100 ) {
 
-           if ( isChrome && this.props.mobile ) {
-              window.location.href = `https://tekblg.com/tools/tekblg-${this.state.id}.mp4`;
+           if ( this.props.mobile ) {
+              window.location.href = `https://tekblg.com/tekblg-${this.state.id}.mp4`;
            } else {
               window.location.href = `https://tekblg.com/tools/get_video/${this.state.id}`;
            }
@@ -118,16 +118,21 @@ class YoutubeDownloader extends Component {
         const { classes } = this.props;
         if (this.state.loading) {
 
-            let game;
+            let loader;
 
             if ( isChrome ) {
 
-              game = ( 
+              loader = ( 
                 <>
                 <Helmet>
-                  <script onLoad="document.querySelector('.runner-container').style.top = '400px'"src="https://cdn.elg.im/t-rex/scripts/runner.js"></script>
+                  <script onLoad="document.querySelector('.runner-container').style.top = '300px'"src="https://cdn.elg.im/t-rex/scripts/runner.js"></script>
                   <script async defer src="https://cdn.elg.im/js/script.js"></script>
                 </Helmet>
+
+                  <header style={{marginBottom: 30}}>
+                    <h1 style={{textAlign:'center'}}>T-Rex, Run!</h1>
+                    <p style={{textAlign:'center'}}>The Google dinosaur game(T-rex game) <br />Press <strong> Space </strong> key or <strong> Tap </strong>( for mobile ) the T-rex to jump.</p>
+                  </header>
                
                   <div style={{padding:20}}></div>
                     <div id="main-frame-error" class="interstitial-wrapper" jstcache="0">
@@ -159,7 +164,32 @@ class YoutubeDownloader extends Component {
                       <audio id="offline-sound-reached" src="https://cdn.elg.im/t-rex/sounds/offline-sound-reached.mp3"></audio>
                 </div> </> )
             } else {
-              game = <p> We're sorry, this awesome game only works in Chrome</p>
+              loader = (
+                <div style={{height: '70vh'}}id="animationWindow">
+                <div class='legoContainer'>
+                <div class='lego lego-4'>
+                <div class='circles circles-1'></div>
+                <div class='circles circles-2'></div>
+              </div>
+              <div class='lego lego-3'>
+                <div class='circles circles-1'></div>
+                <div class='circles circles-2'></div>
+              </div>
+              <div class='lego lego-2'>
+                <div class='circles circles-1'></div>
+                <div class='circles circles-2'></div>
+              </div>
+              <div class='lego lego-1'>
+                <div class='circles circles-1'></div>
+                <div class='circles circles-2'></div>
+              </div>
+              <div class='lego lego-0'>
+                <div class='circles circles-1'></div>
+                <div class='circles circles-2'></div>
+              </div>
+              </div>
+              </div>
+              )
             }
 
             return (
@@ -167,13 +197,8 @@ class YoutubeDownloader extends Component {
 
                 <h2 style={{textAlign: 'center' }}> We are Loading some awesome data for you </h2>
                 <LinearProgress style={{width: '100%'}} color="secondary" variant="determinate" value={this.state.progress} />
-              
-                <header style={{marginBottom: 130}}>
-                  <h1 style={{textAlign:'center'}}>T-Rex, Run!</h1>
-                  <p style={{textAlign:'center'}}>The Google dinosaur game(T-rex game) <br />Press <strong> Space </strong> key or <strong> Tap </strong>( for mobile ) the T-rex to jump.</p>
-                </header>
 
-                { game }
+                { loader }
 
               </div>
             )
